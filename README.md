@@ -14,7 +14,7 @@ This repository contains all the necessary source code and Docker configuration 
 
 ---
 
-## Quick Start: Running GBApp via Docker
+##  Running GBApp locally via Docker
 
 These instructions let you build and run the GBApp Docker container on your local machine.
 
