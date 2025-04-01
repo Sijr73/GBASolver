@@ -19,7 +19,7 @@ This repository contains all the necessary source code and Docker configuration 
 These instructions let you build and run the GBApp Docker container on your local machine.
 
 1. **Install Docker**  
-   - [Docker Desktop](https://www.docker.com/products/docker-desktop) for macOS, Windows, or Linux.
+   - [Docker Desktop](https://www.docker.com/) for macOS, Windows, or Linux.
 
 2. **Clone or Download this Repository**
 
