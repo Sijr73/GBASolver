@@ -31,14 +31,14 @@ These instructions let you build and run the GBApp Docker container on your loca
 
    
    ```bash
-   docker build -t gba-app .
+   docker build -t gbapp .
    ```
 
 4. **Run the Docker Container**
 
    ```bash
    
-   docker run -d --rm -p 3838:3838 --name gba-app gba-app
+   docker run -d --rm -p 3838:3838 --name gbapp gbapp
    ```
    `-d`: run the container in detached mode
 
