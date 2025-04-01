@@ -3,7 +3,7 @@
 
 ## Overview
 
-**GBApp** GBApp is an intuitive web application for Growth Balance Analysis (GBA) of self-replicating cell models. Built with R/Shiny, it features a user-friendly, spreadsheet-style interface that enables researchers to model cellular resource allocation under nonlinear kinetic rate laws. GBApp streamlines model construction by integrating enzyme kinetics and parameter data from the BRENDA database, and generating dynamic visualizations of metabolic pathways. By lowering computational barriers, GBApp makes nonlinear cellular modeling more accessible to the broader scientific community.
+**GBApp**  is an intuitive web application for Growth Balance Analysis (GBA) of self-replicating cell models. Built with R/Shiny, it features a user-friendly, spreadsheet-style interface that enables researchers to model cellular resource allocation under nonlinear kinetic rate laws. GBApp streamlines model construction by integrating enzyme kinetics and parameter data from the BRENDA database, and generating dynamic visualizations of metabolic pathways. By lowering computational barriers, GBApp makes nonlinear cellular modeling more accessible to the broader scientific community.
 
 🔗 **Try GBApp online:** [GBApp Web Application](https://gba.ccb.cs.hhu.de/) 
 
