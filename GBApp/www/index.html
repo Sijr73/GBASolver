@@ -1,0 +1,2437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growth Balance Analysis</title>
+    
+  {{ headContent() }}
+    
+    
+    <link rel="shortcut icon" href="./assets/compiled/svg/favicon.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAiCAYAAADRcLDBAAAEs2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS41LjAiPgogPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgeG1sbnM6ZXhpZj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iCiAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIKICAgIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIKICAgIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIgogICAgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIKICAgZXhpZjpQaXhlbFhEaW1lbnNpb249IjMzIgogICBleGlmOlBpeGVsWURpbWVuc2lvbj0iMzQiCiAgIGV4aWY6Q29sb3JTcGFjZT0iMSIKICAgdGlmZjpJbWFnZVdpZHRoPSIzMyIKICAgdGlmZjpJbWFnZUxlbmd0aD0iMzQiCiAgIHRpZmY6UmVzb2x1dGlvblVuaXQ9IjIiCiAgIHRpZmY6WFJlc29sdXRpb249Ijk2LjAiCiAgIHRpZmY6WVJlc29sdXRpb249Ijk2LjAiCiAgIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiCiAgIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIKICAgeG1wOk1vZGlmeURhdGU9IjIwMjItMDMtMzFUMTA6NTA6MjMrMDI6MDAiCiAgIHhtcDpNZXRhZGF0YURhdGU9IjIwMjItMDMtMzFUMTA6NTA6MjMrMDI6MDAiPgogICA8eG1wTU06SGlzdG9yeT4KICAgIDxyZGY6U2VxPgogICAgIDxyZGY6bGkKICAgICAgc3RFdnQ6YWN0aW9uPSJwcm9kdWNlZCIKICAgICAgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWZmaW5pdHkgRGVzaWduZXIgMS4xMC4xIgogICAgICBzdEV2dDp3aGVuPSIyMDIyLTAzLTMxVDEwOjUwOjIzKzAyOjAwIi8+CiAgICA8L3JkZjpTZXE+CiAgIDwveG1wTU06SGlzdG9yeT4KICA8L3JkZjpEZXNjcmlwdGlvbj4KIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+Cjw/eHBhY2tldCBlbmQ9InIiPz5V57uAAAABgmlDQ1BzUkdCIElFQzYxOTY2LTIuMQAAKJF1kc8rRFEUxz9maORHo1hYKC9hISNGTWwsRn4VFmOUX5uZZ36oeTOv954kW2WrKLHxa8FfwFZZK0WkZClrYoOe87ypmWTO7dzzud97z+nec8ETzaiaWd4NWtYyIiNhZWZ2TvE946WZSjqoj6mmPjE1HKWkfdxR5sSbgFOr9Ll/rXoxYapQVik8oOqGJTwqPL5i6Q5vCzeo6dii8KlwpyEXFL519LjLLw6nXP5y2IhGBsFTJ6ykijhexGra0ITl5bRqmWU1fx/nJTWJ7PSUxBbxJkwijBBGYYwhBgnRQ7/MIQIE6ZIVJfK7f/MnyUmuKrPOKgZLpEhj0SnqslRPSEyKnpCRYdXp/9++msneoFu9JgwVT7b91ga+LfjetO3PQ9v+PgLvI1xkC/m5A+h7F32zoLXug38dzi4LWnwHzjeg8UGPGbFfySvuSSbh9QRqZ6H+Gqrm3Z7l9zm+h+iafNUV7O5Bu5z3L/wAdthn7QIme0YAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAJTSURBVFiF7Zi9axRBGIefEw2IdxFBRQsLWUTBaywSK4ubdSGVIY1Y6HZql8ZKCGIqwX/AYLmCgVQKfiDn7jZeEQMWfsSAHAiKqPiB5mIgELWYOW5vzc3O7niHhT/YZvY37/swM/vOzJbIqVq9uQ04CYwCI8AhYAlYAB4Dc7HnrOSJWcoJcBS4ARzQ2F4BZ2LPmTeNuykHwEWgkQGAet9QfiMZjUSt3hwD7psGTWgs9pwH1hC1enMYeA7sKwDxBqjGnvNdZzKZjqmCAKh+U1kmEwi3IEBbIsugnY5avTkEtIAtFhBrQCX2nLVehqyRqFoCAAwBh3WGLAhbgCRIYYinwLolwLqKUwwi9pxV4KUlxKKKUwxC6ZElRCPLYAJxGfhSEOCz6m8HEXvOB2CyIMSk6m8HoXQTmMkJcA2YNTHm3congOvATo3tE3A29pxbpnFzQSiQPcB55IFmFNgFfEQeahaAGZMpsIJIAZWAHcDX2HN+2cT6r39GxmvC9aPNwH5gO1BOPFuBVWAZue0vA9+A12EgjPadnhCuH1WAE8ivYAQ4ohKaagV4gvxi5oG7YSA2vApsCOH60WngKrA3R9IsvQUuhIGY00K4flQG7gHH/mLytB4C42EgfrQb0mV7us8AAMeBS8mGNMR4nwHamtBB7B4QRNdaS0M8GxDEog7iyoAguvJ0QYSBuAOcAt71Kfl7wA8DcTvZ2KtOlJEr+ByyQtqqhTyHTIeB+ONeqi3brh+VgIN0fohUgWGggizZFTplu12yW8iy/YLOGWMpDMTPXnl+Az9vj2HERYqPAAAAAElFTkSuQmCC" type="image/png">
+    
+
+
+    <link rel="stylesheet" href="./assets/compiled/css/app.css">
+    <link rel="stylesheet" href="./assets/compiled/css/app-dark.css">
+    <link rel="stylesheet" href="./assets/compiled/css/iconly.css">
+    <link rel="stylesheet" href="assets/extensions/filepond/filepond.css">
+    <link rel="stylesheet" href="assets/extensions/filepond-plugin-image-preview/filepond-plugin-image-preview.css">
+    <link rel="stylesheet" href="assets/extensions/toastify-js/src/toastify.css">
+      <style>
+/* General Tooltip Styling */
+.introjs-tooltip {
+  background-color: rgba(255, 255, 255, 0.98);
+  color: #333;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Tooltip Buttons */
+.introjs-button,
+.introjs-button:hover,
+.introjs-button:focus,
+.introjs-button:active {
+  background-color: #d9dff2; /* Match primary color */
+  color: black;
+  border: none;
+  border-radius: 8px; /* Slightly rounded edges */
+  padding: 10px 16px; /* Increase padding to fix distortion */
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Crisper shadows */
+}
+
+/* Hover & Focus State */
+.introjs-button:hover,
+.introjs-button:focus {
+  background-color: #d9dff2;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* Disabled Buttons */
+.introjs-disabled,
+.introjs-disabled:focus,
+.introjs-disabled:hover {
+  background-color: #ddd;
+  color: #777;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Step Number Circle */
+.introjs-helperNumberLayer {
+  background-color: #4a63e7;
+  color: #fff;
+  font-size: 12px;
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Adjust button spacing */
+.introjs-tooltipbuttons {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 12px;
+}
+
+      
+/* Container styling */
+.toc-container {
+  background-color: #F2F7FF;    /* Subtle pastel background */
+  border: 1px solid #E0E0E0;    /* Light border */
+  border-radius: 10px;          /* Smooth corners */
+  padding: 1rem;                /* Spacing inside */
+  width: 100%;                  /* Make it responsive, then limit in media queries if needed */
+  max-width: 300px;             /* Optional fixed max width */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Very subtle shadow */
+}
+
+/* Optional heading style inside container */
+.toc-container .toc-title {
+  margin: 0 0 0.75rem 0;
+  color: #435EBE; /* Your brand’s blue, or a variation */
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* List reset */
+.toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* List item spacing */
+.toc-list li {
+  margin-bottom: 0.5rem;
+}
+
+/* Default link style */
+.toc-list a {
+  display: block;               /* Takes full line; easier for hover */
+  padding: 0.5rem 0.75rem;      /* Clickable area */
+  text-decoration: none;
+  border-radius: 6px;
+  color: #435EBE;               /* Links in your brand color */
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+/* Hover & active states */
+.toc-list a:hover {
+  background-color: #E9EEFF;    /* Slight highlight on hover */
+  text-decoration: none;
+}
+
+.toc-list a.active {
+  background-color: #D9E3FF;    /* More prominent highlight for active */
+  font-weight: 600;             /* Slightly bolder text */
+  color: #2D49BA;               /* Darker variant of your brand color */
+}
+  
+      #d3flux002_options {
+    display: flex;
+    justify-content: space-around; 
+    align-items: center;
+    gap: 5px; 
+    margin-top: 5px; 
+}
+      #d3flux001_options {
+    display: flex;
+    justify-content: space-around; 
+    align-items: center;
+    gap: 5px; 
+    margin-top: 5px; 
+}
+      
+      .tutorial-content-container {
+    max-height: 600px; /* Fixed height for consistent sizing */
+    overflow-y: auto; /* Enables vertical scrolling */
+    padding: 15px; /* Padding inside the container */
+    border: 1px solid white; /* Optional border for styling */
+    border-radius: 8px; /* Rounded corners for style */
+    box-sizing: border-box;
+}
+.tutorial-container {
+  max-height: 80vh; /* or whatever you prefer */
+  overflow-y: auto; /* makes it scrollable */
+  position: relative; /* helps with offset calculations if needed */
+}
+
+      .pagination .page-item .page-link {
+    cursor: pointer; /* Shows a pointer cursor to indicate it's clickable */
+    transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+.pagination .page-item .page-link:hover {
+    background-color: #e0e0e0; /* Light gray background on hover */
+    color: #333; /* Change text color on hover for better visibility */
+}
+
+     .sidebar-menu {
+        margin-top: -75px; /* Adjust this value as needed */
+      }
+        .theme-toggle {
+            margin-left: 150px; /* Adjust the value as needed */
+        }
+
+        .form-control{
+
+          opacity: 1;
+          overflow: hidden;
+        }
+        #loading-container {
+        display: flex;
+        align-items: center;
+        margin-left: 0px; 
+flex-wrap: wrap;
+  gap: 3px; 
+  
+}
+
+
+    html[data-bs-theme=dark] .vue-input td,
+    html[data-bs-theme=dark] .vue-input th {
+        padding: 0.1em 0.5em;
+        border: 1px white solid;
+        height: 2em;
+
+    }
+    .vue-input td,
+    .vue-input th {
+        padding: 0.1em 0.5em;
+        height: 2em;
+        background-color: white;
+        border:1px solid #bbb !important;
+        color:#3F62A6;
+        white-space: nowrap;
+
+    }
+
+    .vue-input td:hover {
+        background-color: #e0e0e0;;
+    }
+    .vue-input th:hover{
+        text-shadow: 0 0 1px;
+        background-color: #e8e8e8;
+    }
+    .table-container {
+            width: 100%;
+            overflow-x: auto; 
+        }
+
+     .vue-input table {
+    border-collapse: separate;
+      border-spacing: 0px;
+      min-width: 350px;
+      overflow-x: auto;
+      table-layout: auto;
+    }  
+    .vue-input table tr th:first-child,
+    .vue-input table tr td:first-child {
+      border-left: 2px solid #bbb;
+    }
+    .vue-input table tr th {
+      background:#f2f7ff;
+       border-top: 2px solid #bbb;
+      text-align: center;
+      color:#435ebe;
+
+    }
+
+    /* top-left border-radius */
+    .vue-input table tr:first-child th:first-child {
+      border-top-left-radius: 6px;
+    }
+
+    /* top-right border-radius */
+    .vue-input table tr:first-child th:last-child {
+      border-top-right-radius: 6px;
+    }
+
+    /* bottom-left border-radius */
+    .vue-input table tr:last-child th:first-child {
+      border-bottom-left-radius: 6px;
+    }
+
+    /* bottom-right border-radius */
+    .vue-input table tr:last-child td:last-child {
+      border-bottom-right-radius: 6px;
+    }
+    .selectize-dropdown .optgroup-header{
+
+      font-size: 16px;
+
+    }
+    /*dark mode */
+    html[data-bs-theme=dark] .vue-input td,
+    html[data-bs-theme=dark] .vue-input th {
+        padding: 0.1em 0.5em;
+        height: 2em;
+        background-color: #1e1e2d;
+        border:1px solid #bbb !important;
+        color:#c2c2d9;
+
+    }
+
+    html[data-bs-theme=dark] .vue-input th:hover,
+    html[data-bs-theme=dark] .vue-input td:hover {
+        background-color: #2a2a3b;
+    }
+    html[data-bs-theme=dark] .vue-input th:hover{
+        text-shadow: 0 0 1px;
+    }
+
+    html[data-bs-theme=dark] .vue-input table {
+    border-collapse: separate;
+      border-spacing: 0px;
+      min-width: 350px;
+    }  
+    html[data-bs-theme=dark] .vue-input table tr th:first-child,
+    html[data-bs-theme=dark] .vue-input table tr td:first-child {
+      border-left: 2px solid #bbb;
+    }
+    html[data-bs-theme=dark] .vue-input table tr th {
+      background: #333445;
+       border-top: 2px solid #bbb;
+      text-align: center;
+    }
+
+    /* top-left border-radius */
+    html[data-bs-theme=dark] .vue-input table tr:first-child th:first-child {
+      border-top-left-radius: 6px;
+    }
+
+    /* top-right border-radius */
+    html[data-bs-theme=dark] .vue-input table tr:first-child th:last-child {
+      border-top-right-radius: 6px;
+    }
+
+    /* bottom-left border-radius */
+    html[data-bs-theme=dark] .vue-input table tr:last-child th:first-child {
+      border-bottom-left-radius: 6px;
+    }
+
+    /* bottom-right border-radius */
+    html[data-bs-theme=dark] .vue-input table tr:last-child td:last-child {
+      border-bottom-right-radius: 6px;
+    }
+    .rounded-pill{
+      border-radius: 10px !important;
+
+    }
+    html[data-bs-theme=dark] .nav-link{
+      color:#c2c2d9 !important;
+    }
+    html[data-bs-theme=dark] .nav-link:hover{
+      text-shadow: 0 0 1px !important;
+    }
+
+    .nav-item::after {
+        content: "";
+        display: block;
+        margin-top: 1px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 2px;
+        width: 0px;
+        background-color: #435ebe;
+    }
+    .nav-item:hover::after {
+        width: 100%;
+        transition: all 0.4s;
+    }
+
+     html[data-bs-theme=dark] .form-control{
+
+    background-color: #1e1e2d;
+        }
+
+
+    html[data-bs-theme=dark] .btn-light{
+      background-color: #6c757d;
+      border:#6c757d;
+      color:white;
+      border-radius: 0.25rem;
+    }
+
+    html[data-bs-theme=dark] .selectize-input{
+    background-color: #1e1e2d !important;
+    color:#c2c2d9;
+    }
+    html[data-bs-theme=dark] .selectize-dropdown-content{
+      background-color: #1e1e2d !important;
+    color:#c2c2d9;
+    }
+    html[data-bs-theme=dark] .selectize-dropdown .option:hover{
+      background-color:  #2a2a3b!important;
+      color:#c2c2d9;
+    }
+    html[data-bs-theme=dark] .selectize-dropdown .optgroup-header{
+      background-color:  #2a2a3b!important;
+      color:#c2c2d9;
+      font-size: 16px;
+
+    }
+    html[data-bs-theme=dark] .selectize-dropdown .optgroup-header:hover{
+      background-color:  #2a2a3b!important;
+      color:#c2c2d9;
+    }
+
+    html[data-bs-theme=dark] .apexcharts-yaxis-title{
+      color:#c2c2d9 !important;
+    }
+    html[data-bs-theme=dark] .apexcharter text[Attributes Style]{
+      color:#c2c2d9 !important;
+    }
+
+    html[data-bs-theme=dark] .apexcharts-title-text{
+      --color: #c2c2d9;
+       fill: var(--color) !important;
+       font-weight: bold !important;
+    }
+    html[data-bs-theme=dark] .apexcharts-text.apexcharts-yaxis-title-text{
+      --color: #c2c2d9;
+       fill: var(--color) !important;
+       font-weight: bold !important;
+    }
+    html[data-bs-theme=dark] .apexcharts-text.apexcharts-xaxis-title-text{
+      --color: #c2c2d9;
+       fill: var(--color) !important;
+       font-weight: bold !important ;
+    }
+
+#fullPageLanding {
+    height: 100vh;
+    width: 100vw;
+    background: url('assets/Artboard 1.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Set position as relative for pseudo-element positioning */
+}
+@media (max-width: 768px) {
+    #fullPageLanding {
+      height: 100vh;
+    width: 100vw;
+        background: url('assets/Artboard 1.png') no-repeat center center scroll; /* Change fixed to scroll for better mobile performance */
+        background-size: cover; /* Adjust background-size for smaller screens */
+    }
+}
+
+#fullPageLanding::before {
+    content: ""; /* Required for pseudo-elements */
+    position: absolute; /* Position overlay relative to #fullPageLanding */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.1); /* Black overlay with 50% opacity */
+    z-index: 1; /* Ensure it sits above the background but below content */
+}
+
+.page-content1{
+    height: 100vh;
+    width: 100vw;
+}
+.landingContent {
+
+    position: relative; /* Make sure it's positioned relative to the parent */
+    z-index: 2; /* Higher z-index to make text appear above the overlay */
+    margin-top: 50px; /* Additional top margin to lower the content */
+     text-align: center;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.4); /* Semi-transparent overlay */
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 1200px;
+}
+
+#sidebar {
+    transition: opacity 0.3s ease-out, visibility 0.3s ease-out !important; /* Transition for opacity and visibility */
+    opacity: 1 !important; /* Default to fully visible */
+    visibility: visible !important; /* Ensure sidebar is visible */
+}
+
+/* Style to apply when sidebar should be hidden */
+#sidebar.hidden {
+    opacity: 0 !important;
+    visibility: hidden !important; /* Hide sidebar making it invisible and non-interactive */
+}
+
+.typing p {
+    padding-right: 5px; /* Space between text and cursor */
+    margin-right: 5px; /* Prevents text from touching the edge */
+    white-space: pre-wrap; /* Wrapping text in the container */
+    word-wrap: break-word; /* Breaks the words correctly */
+    text-align: left;
+    font-weight: bold;
+}
+
+
+#collapseExample{
+  
+  padding-top: 20px;
+}
+#collapseExample1{
+  
+  padding-top: 20px;
+}
+#advanced1{
+  
+  padding-bottom: 20px;
+}
+
+#downloadresult{
+   padding-left: 5px;
+}
+
+  .button-container {
+    display: flex;
+    align-items: center;
+  }
+  .button-container button,
+  .button-container #downloadresult1 {
+    margin-right: 5px; /* Adjust spacing between buttons as needed */
+  }
+  .button-container #downloadresult1 a {
+    display: inline-block;
+  }
+/* Advanced Options Button Style */
+
+
+.help-tip{
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    text-align: center;
+    background-color: #BCDBEA;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+    line-height: 26px;
+    cursor: default;
+     z-index: 1000;
+}
+
+.help-tip:before{
+    content:'?';
+    font-weight: bold;
+    color:#fff;
+}
+
+.help-tip:hover p{
+    display:block;
+    transform-origin: 100% 0%;
+
+    -webkit-animation: fadeIn 0.3s ease-in-out;
+    animation: fadeIn 0.3s ease-in-out;
+
+}
+
+.help-tip p{    /* The tooltip */
+    display: none;
+    text-align: left;
+    background-color: #1E2021;
+    padding: 20px;
+    width: 300px;
+    position: absolute;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    right: -4px;
+    color: #FFF;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.help-tip p:before{ /* The pointer of the tooltip */
+    position: absolute;
+    content: '';
+    width:0;
+    height: 0;
+    border:6px solid transparent;
+    border-bottom-color:#1E2021;
+    right:10px;
+    top:-12px;
+}
+
+.help-tip p:after{ /* Prevents the tooltip from being hidden */
+    width:100%;
+    height:40px;
+    content:'';
+    position: absolute;
+    top:-40px;
+    left:0;
+}
+
+
+/* CSS animation */
+
+@-webkit-keyframes fadeIn {
+    0% { 
+        opacity:0; 
+        transform: scale(0.6);
+    }
+
+    100% {
+        opacity:100%;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    0% { opacity:0; }
+    100% { opacity:100%; }
+}
+
+.responsive-btn {
+    width: auto; /* Default width */
+}
+
+
+    </style>
+
+
+</head>
+
+<body>
+<!-- Full Page Landing Section -->
+<div id="fullPageLanding">
+    <div class="landingContent ">
+        <h1 style="font-size: 2.5em; color: #E6E6FA;">GBApp</h1>
+        <div class="typing">
+    <p style="font-size: 1.2em; color: #E6E6FA;"></p>
+        </div>
+        <button style="font-size: 1em; padding: 10px 20px; border: none; border-radius: 5px; font-weight: bold; background-color: #FFA500; color: white; cursor: pointer; transition: background-color 0.3s ease;" onclick="scrollToDashboard()">Explore Now</button>
+    </div>
+</div>
+
+<script src="assets/static/js/initTheme.js"></script>
+<div id="app">
+    <div id="sidebar">
+        <div class="sidebar-wrapper active">
+            <div class="sidebar-header position-relative">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
+                    role="img" class="iconify iconify--system-uicons" width="20" height="20"
+                    preserveAspectRatio="xMidYMid meet" viewBox="0 0 21 21">
+                            <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round">
+                                <path
+                                d="M10.5 14.5c2.219 0 4-1.763 4-3.982a4.003 4.003 0 0 0-4-4.018c-2.219 0-4 1.781-4 4c0 2.219 1.781 4 4 4zM4.136 4.136L5.55 5.55m9.9 9.9l1.414 1.414M1.5 10.5h2m14 0h2M4.135 16.863L5.55 15.45m9.899-9.9l1.414-1.415M10.5 19.5v-2m0-14v-2"
+                                opacity=".3"></path>
+                                <g transform="translate(-210 -1)">
+                                    <path d="M220.5 2.5v2m6.5.5l-1.5 1.5"></path>
+                                    <circle cx="220.5" cy="11.5" r="4"></circle>
+                                    <path d="m214 5l1.5 1.5m5 14v-2m6.5-.5l-1.5-1.5M214 18l1.5-1.5m-4-5h2m14 0h2"></path>
+                                </g>
+                            </g>
+                        </svg>
+                        <div class="form-check form-switch fs-6">
+                            <input class="form-check-input  me-0" type="checkbox" id="toggle-dark" style="cursor: pointer">
+                            <label class="form-check-label"></label>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
+                            role="img" class="iconify iconify--mdi" width="20" height="20" preserveAspectRatio="xMidYMid meet"
+                            viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="m17.75 4.09l-2.53 1.94l.91 3.06l-2.63-1.81l-2.63 1.81l.91-3.06l-2.53-1.94L12.44 4l1.06-3l1.06 3l3.19.09m3.5 6.91l-1.64 1.25l.59 1.98l-1.7-1.17l-1.7 1.17l.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95l2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85c-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14c.4-.4.82-.76 1.27-1.08c.75-.53 1.93.36 1.85 1.19c-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82c-2.81 3.14-2.7 7.96.31 10.98c3.02 3.01 7.84 3.12 10.98.31Z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div class="sidebar-toggler  x">
+                        <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-menu">
+                <ul class="menu">
+                    <li class="sidebar-title"><h5>Menu</h5></li>
+
+                    <li
+                        class="sidebar-item ">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-grid-fill"></i>
+                            <span>Home</span>
+                        </a>
+
+
+                    </li>
+
+                    <li
+                        class="sidebar-item active">
+                        <a href="#main" class='sidebar-link'>
+                            <i class="bi bi-stack"></i>
+                            <span>Upload Model</span>
+                        </a>
+
+                    </li>
+
+                    <li
+                        class="sidebar-item">
+                        <a href="#createmodelhead" class='sidebar-link'>
+                            <i class="bi bi-collection-fill"></i>
+                            <span>Create Model</span>
+                        </a>
+                             
+
+        
+
+                    </li>
+
+        
+
+                    <li class="sidebar-title">Forms &amp; Contact</li>
+
+                    <li
+                        class="sidebar-item">
+                        <a href="#contactus" class='sidebar-link'>
+                            <i class="bi bi-hexagon-fill"></i>
+                            <span>Tutorial</span>
+                        </a>
+
+
+
+
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="main">
+    <header class="mb-3" id="site-header">
+        <a href="#main" class="burger-btn d-block d-xl-none">
+            <i class="bi bi-justify fs-3"></i>
+        </a>
+    </header>
+           
+    <div class="page-heading" id="uploadmodelhead">
+        <h2>GBApp: Upload Model</h2>
+        
+    </div> 
+   
+    <div class="page-content"> 
+        <section class="row">
+
+            <div id="uploadsection1" class="col-12 col-md-6">
+
+{{
+introjsUI()
+}}
+
+
+                        <div  class="row">
+                            <div class="col-12">
+                                <div class="card">
+                              
+                                    <div class="card-header" style="display: flex; align-items: center; justify-content: space-between;">
+             
+           
+         <div class="help-tip">
+    <p>
+        To get started, upload your GBA model by clicking "Choose File" and selecting your .ods file. 
+        If you don't have the GBA template yet, you can download it by clicking "Download GBA Template." 
+        After uploading your model, ensure its validity by clicking "Check Model." You'll be notified immediately if any issues are detected.
+        For more control, you can use the advanced options to change the solver type for Non-linear Optimization (default is L-BFGS). 
+        Once you're ready, click "Run" to begin the optimization process for your uploaded model.
+    </p>
+</div>
+
+                                        <h4>Upload your model</h4>
+                                           <div class="col-md-6">
+    <button id="start_tour" type="button" class=" action-button btn btn-outline-success">Take a Quick Tour</button>
+  </div>
+                                          <div id="loading" style="display: flex; justify-content: flex-end;" data-display-if="$(&#39;html&#39;).hasClass(&#39;shiny-busy&#39;)" data-ns-prefix="">              
+                                           <img src="./assets/compiled/svg/audio.svg" class="me-4" style="width: 1.3rem" alt="audio">
+                                            </div>
+                                    </div> 
+                                    <div class="card-body">
+                                        <label class="control-label shiny-label-null" for="file" id="file-label"></label>
+                                        <div class="input-group" id="fileuploadsection">
+                                            <label class="input-group-btn input-group-prepend">
+                                              <span class="form-control btn btn-light">
+                                                Choose File
+                                                <input id="file" class="shiny-input-file" name="file" type="file" style="position: fixed !important; top: -99999px !important; left: -99999px !important;" accept=".ods"/>
+                                              </span>
+                                            </label>
+                                            <input type="text" class="form-control" placeholder="Upload your GBA model here" readonly="readonly"/>
+                                        </div>
+                                        <div id="file_progress" class="progress active shiny-file-input-progress progress-success">
+                                            <div class="progress-bar"></div>
+                                        </div>
+        <div id="advanced">
+                                  <button class="btn btn-outline-primary col-12" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
+                                Advanced Options
+                            </button>
+                            <div class="collapse form-check-label" id="collapseExample" style="">
+                            {{
+                         fluidRow(
+  selectInput("input1", "Choose a mode:", choices = c("Non-linear Solver")),
+  selectInput("input2", "Choose a parameter:", choices = NULL) # Empty choices initially
+)
+                            }}
+                                
+                        </div>
+                        
+                        </div>
+
+                                        <br>
+                                        <div id="loading-container">
+                                            <button class="btn btn-default action-button btn btn-primary rounded-pill responsive-btn"
+                                                           id="runModelBtn" type="button">Run</button>
+                                                          <div data-display-if="!input.y_axis" data-ns-prefix="">
+                                                {{
+                                               downloadButton("downloadBtn", "GBA template", class="btn btn-dark rounded-pill responsive-btn",style="white-space: nowrap;")
+                                              
+                                          
+                                               }}
+                                               </div>
+                                               <br>        
+
+                                          
+                                           <button id="alert" type="button" class="btn btn-default action-button btn btn-success rounded-pill responsive-btn" style="white-space: nowrap;">Check Model</button>
+                                                
+
+                                          
+                                           <button id="refresh" type="button" class="btn btn-default action-button btn btn-danger rounded-pill responsive-btn">Reset</button>
+                                             <div data-display-if="input.y_axis" data-ns-prefix="">
+                                               <div id="downloadresult">
+      <a id="downloadData" class="btn btn-default shiny-download-link inline-button btn btn-secondary rounded-pill" href="" target="_blank" download>
+        <i class="fas fa-download" role="presentation" aria-label="download icon"></i>
+        Results
+      </a>
+    </div>
+    </div>
+                                               
+                                        </div>
+                                  
+                                         
+                                    </div>
+                                  
+                                </div>
+                            </div>
+                        </div>    
+                <div data-display-if="input.y_axis" data-ns-prefix="">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-3 justify-content-start ">
+                                            <div class="stats-icon purple mb-2">
+                                                <i class="iconly-boldGraph"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <h5 class="text-muted font-semibold"style="text-align: left;font-size: 16px;" >Number of Conditions</h5>
+                                            <h5 class="font-extrabold mb-0">{{ textOutput("Nrcond") }}</h5>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card"> 
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-3 justify-content-start ">
+                                            <div class="stats-icon blue mb-2">
+                                                <i class="iconly-boldChart"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <h5 class="text-muted font-semibold"style="text-align: left;font-size: 16px;" >Maximum Growth rate</h5>
+                                            <h5 class="font-extrabold mb-0 d-flex align-items-baseline">{{ textOutput("maxgr") }}&nbsp;h<sup>-1</sup></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-3 justify-content-start ">
+                                            <div class="stats-icon green mb-2">
+                                                <i class="iconly-boldDiscovery"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <h6 class="text-muted font-semibold"style="text-align: left; font-size: 16px;">Average of Total Protein Concentration</h6>
+                                            <h5 class="font-extrabold mb-0 d-flex align-items-baseline"style="white-space: nowrap;">{{ textOutput("totpr") }}&nbsp;[g L<sup>-1</sup>]</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-3 justify-content-start ">
+                                            <div class="stats-icon red mb-2">
+                                                <i class="iconly-boldTick-Square"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <h6 class="text-muted font-semibold"style="text-align: left;font-size: 16px;" >Number of Converged Optimizations</h6>
+                                            <h5 class="font-extrabold mb-0">{{ textOutput("convergence1") }}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+             </div>
+
+            <div class="col-12 col-md-6">
+                <div class="card" id="interactiveplotsintro">
+                    <div class="card-header">
+                        <h4>Interactive Plots</h4>
+                 <div class="help-tip">
+    <p>
+        In this section, you can visualize the results by selecting different axes, such as Growth Rate, Protein Fractions/Concentrations, Fluxes, and more.
+    </p>
+</div>
+                    </div>
+                    <div class="card-body">
+             <div class="row">
+      <div class="form-group shiny-input-container">
+        <label class="control-label" id="x_axis-label" for="x_axis">Select X-axis</label>
+        <div>
+          <select id="x_axis" class="shiny-input-select"><option value="" selected></option></select>
+          <script type="application/json" data-for="x_axis">{"plugins":["selectize-plugin-a11y"]}</script>
+        </div>
+      </div>
+    
+    <div class="form-group shiny-input-container">
+      <label class="control-label" id="y_axis-label" for="y_axis">Select Y-axis</label>
+      <div>
+        <select id="y_axis" class="shiny-input-select"><option value="" selected></option></select>
+        <script type="application/json" data-for="y_axis">{"plugins":["selectize-plugin-a11y"]}</script>
+      </div>
+    </div>
+
+  
+</div>
+                                  
+                                           
+                                            
+  <div  data-display-if="input.y_axis &amp;&amp; input.y_axis!='protein_fractions'&amp;&amp; input.y_axis!='protein_concentration'&amp;&amp; input.y_axis!='reaction_fluxes'&amp;&amp; input.y_axis!='metabolite_concentration'" data-ns-prefix="">
+                                   {{
+
+
+
+
+                                   apexchartOutput("scatter_plot2")
+
+                                   }}
+                         </div>
+                         <div data-display-if="input.y_axis == 'protein_fractions'" data-ns-prefix="">
+                                {{
+
+                                    apexchartOutput("scatter_plot")
+
+                                                }}
+                          </div>
+                          <div data-display-if="input.y_axis == 'protein_concentration'" data-ns-prefix="">
+                               {{
+
+                                 apexchartOutput("scatter_plot3")
+
+                                }}
+                          </div>
+                          <div data-display-if="input.y_axis == 'reaction_fluxes'" data-ns-prefix="">
+                               {{
+
+                                 apexchartOutput("scatter_plot4")
+
+                              }}
+                          </div>
+                          <div data-display-if="input.y_axis == 'metabolite_concentration'" data-ns-prefix="">
+                               {{
+
+                                 apexchartOutput("scatter_plot5")
+
+                                }}
+                          </div>
+                        </div>
+                        
+                    </div>
+                </div>
+     
+     <div class="card col-md-6" id="Modelpreview">
+   <div class="card-header">
+                      <h4>
+    Your GBA Model
+  </h4>
+ <div style="color: red; font-weight: bold; ">
+    {{ uiOutput("example_model_placeholder") }}
+  </div>
+                   
+               <div class="help-tip">
+    <p>
+        Here, you can view your uploaded GBA model. The first tab displays the Mass Fraction matrix (M) of your model. Even after optimization, you can modify any parameters and rerun the optimization by clicking "Run" in the last tab to see the changes. Additionally, you can download the updated model by clicking "Download" in the same tab.
+    </p>
+</div>
+                    </div>
+                        <div class="card-body">
+    
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link active" id="home1-tab" data-bs-toggle="tab" href="#home1" role="tab"
+                                            aria-controls="home1" aria-selected="true">Mass fraction</a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link" id="profile1-tab" data-bs-toggle="tab" href="#profile1" role="tab"
+                                            aria-controls="profile1" aria-selected="false">Km</a>
+                                            
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link" id="contact1-tab" data-bs-toggle="tab" href="#contact1" role="tab"
+                                            aria-controls="contact1" aria-selected="false">KI</a>
+                                    </li>
+                                     <li class="nav-item" role="presentation">
+                                        <a class="nav-link" id="KA1-tab" data-bs-toggle="tab" href="#KA1" role="tab"
+                                            aria-controls="KA1" aria-selected="false">KA</a>
+                                    </li>
+                                     <li class="nav-item" role="presentation">
+                                        <a class="nav-link" id="kcat1-tab" data-bs-toggle="tab" href="#kcat1" role="tab"
+                                            aria-controls="kcat1" aria-selected="false">kcat</a>
+                                    </li>
+                                     <li class="nav-item" role="presentation">
+                                        <a class="nav-link" id="Rho1-tab" data-bs-toggle="tab" href="#Rho1" role="tab"
+                                            aria-controls="Rho1" aria-selected="false">Condition</a>
+                                    </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="home1" role="tabpanel" aria-labelledby="home-tab">
+                                  
+                                    <br>           
+                                     {{
+                                     #reactableOutput("Mtotalmatrix")
+                                     matrixInput("matrixMtotal", "Your Mass Fraction (M) matrix",
+                                                                value = matrix(NA, 3, 3),
+                                                                rows = list(names = TRUE,
+                                                                            editableNames = TRUE),
+                                                                cols = list(names = TRUE,
+                                                                            editableNames = TRUE),class = "numeric",inputClass = "table-container")
+                                                                              }}
+                                                                                                         <div class="help-tip">
+    <p>
+        Here, you can view your uploaded GBA model. The first tab displays the Mass Fraction matrix (M) of your model. Even after optimization, you can modify any parameters and rerun the optimization by clicking "Run" in the "Condition" tab to see the changes. Additionally, you can download the updated model by clicking "Download" in the same tab.
+    </p>
+</div>
+                                </div>
+                                <div class="tab-pane fade" id="profile1" role="tabpanel" aria-labelledby="profile1-tab">
+                                     <br>
+                                     
+                                                  {{
+                                                     matrixInput("matrixK", "Your Michaelis Constant (Km) matrix",
+                                    value = matrix(NA, 3, 3),
+                                    rows = list(names = TRUE,
+                                                editableNames = TRUE),
+                                    cols = list(names = TRUE,
+                                                editableNames = TRUE),class = "numeric",inputClass = "table-container")
+                                                }}
+    <div class="help-tip">
+    <p>
+        This section displays the Michaelis Constant (Km) matrix of your uploaded GBA model. Make sure each substrate in your reactions has a valid Km value; otherwise, a default value of 0.1 g/L will be used. You can also search for Km values in the table below, sourced from the BRENDA database. Please ensure Km values are mass balanced and converted to g/L by multiplying the Km values in molar units by the molecular weights of the respective substrates.
+    </p>
+</div>
+   <br>
+                                           <div class="accordion" id="accordionExample">
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingTwo">
+                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo1" aria-expanded="false" aria-controls="collapseTwo1">
+                                                        Michaelis constant data
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseTwo1" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                                        <div class="accordion-body">
+                                                                        {{
+                                                                        table11=reactableOutput("data_table1")
+                                                                        }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                </div>
+                                <div class="tab-pane fade" id="contact1" role="tabpanel" aria-labelledby="contact1-tab">
+                                    <br>
+                                                        {{
+                                                             matrixInput("matrixKI", "Your Inhibition Constant (KI) matrix",
+                                            value = matrix(NA, 3, 3),
+                                            rows = list(names = TRUE,
+                                                        editableNames = TRUE),
+                                            cols = list(names = TRUE,
+                                                        editableNames = TRUE),class = "numeric",inputClass = "table-container")
+                                                        }}
+                                                                  <div class="help-tip">
+    <p>
+        This section displays the Inhibition Constant (KI) matrix of your uploaded GBA model. You can modify the values directly here.
+    </p>
+</div>
+                                </div>
+                                <div class="tab-pane fade" id="KA1" role="tabpanel" aria-labelledby="KA1-tab">
+                                    <br>
+                                                        {{
+                                                             matrixInput("matrixKA", "Your Activation constant (KA) matrix",
+                                            value = matrix(NA, 3, 3),
+                                            rows = list(names = TRUE,
+                                                        editableNames = TRUE),
+                                            cols = list(names = TRUE,
+                                                        editableNames = TRUE),class = "numeric",inputClass = "table-container")
+                                                        }}
+                                               <div class="help-tip">
+    <p>
+        This section displays the Activation constant (KA) matrix of your uploaded GBA model. You can modify the values directly here.
+    </p>
+</div>
+                                </div>
+                                <div class="tab-pane fade" id="kcat1" role="tabpanel" aria-labelledby="kcat1-tab">
+                                    <br>
+                                                        {{
+                                                             matrixInput("matrixKcatf", "Your Turnover number (kcat) matrix",
+                                            value = matrix(NA, 3, 3),
+                                            rows = list(names = TRUE,
+                                                        editableNames = TRUE),
+                                            cols = list(names = TRUE,
+                                                        editableNames = TRUE),class = "numeric",inputClass = "table-container")
+                                                        }}
+    <div class="help-tip">
+    <p>
+        This section displays the Turnover Number (kcat) matrix of your uploaded GBA model. You can search for kcat values in the table below, sourced from the BRENDA database. Ensure that kcat values are mass balanced and converted to 1/h (mass of product/mass of enzyme/hour) by multiplying the kcat values in 1/h units by the molecular weight of the respective product and dividing by the mass of its enzyme. "kcatf" and "kcatb" indicates the kcat for forward and backward reactions, respectively.
+    </p>
+</div>
+ <br>
+                                           <div class="accordion" id="accordionExample">
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="headingOne">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne1" aria-expanded="false" aria-controls="collapseOne1">
+                                                    Turnover number (kcat)
+                                                    </button>
+                                                </h2>
+                                                <div id="collapseOne1" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body">
+                                                                {{
+                                                                table21=reactableOutput("data_kcat1")
+                                                                }}
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            </div>
+                                </div>
+                                <div class="tab-pane fade" id="Rho1" role="tabpanel" aria-labelledby="Rho1-tab">
+                                    <br>
+
+                                                        {{
+                                                             matrixInput("matrixcond", "Your External Concentration and Cell density matrix",
+                                            value = matrix(NA, 3, 3),
+                                            rows = list(names = TRUE,
+                                                        editableNames = TRUE),
+                                            cols = list(names = TRUE,
+                                                        editableNames = TRUE),class = "numeric",inputClass = "table-container")
+                                                        }}
+                     <div class="help-tip">
+    <p>
+        This section displays the External Concentration and Cell Density matrix. The parameter "Rho" represents the cell density in your model, while the other rows show the external concentrations. Ensure that all external concentrations are labeled with "x_". You can modify these values and rerun the optimization by clicking "Run" to see the changes. To download the latest version of your edited GBA model, click "Download."
+    </p>
+</div>
+
+                                    <button class="btn btn-default action-button btn btn-primary rounded-pill"  id="runModelBtn3" type="button">Run</button>
+                                    {{
+                                    downloadButton("downloadModel", "Download", class="btn btn-dark rounded-pill" )
+                                    }}
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                               <div class="col-md-6">
+                  <div class="card" id="pathwayviz"> 
+                  <div class="card-header">
+                        <h4>Pathway Visualization</h4>
+                   <div class="help-tip">
+    <p>
+        In this section, you can view the network visualization of your GBA model. The dot size represents metabolite concentrations, while the line thickness indicates protein concentrations, both as results from the optimization. You can download the visualization results below.
+    </p>
+</div>
+
+                    </div>
+      <div class="card-body"> 
+      <div class="row">
+<div id="d3flux002"></div>
+<div id="d3flux002_options">
+  <button type="button" class="download btn btn-primary rounded-pill">Save JSON</button>
+  <button type="button" class="reactionbutton btn btn-success rounded-pill ">Show Reaction Nodes</button>
+  <button type="button" class="svgbutton btn btn-info rounded-pill ">Download SVG</button>
+  <button type="button"  id= "toggleZoomButton" class="btn btn-warning rounded-pill">Enable Zoom</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+                                       {{
+                                        disconnectMessage(
+                            text = "There was an error with the model, Please reload the application and try again.",
+                            refresh = "Reload now",
+                            background = "#f2f7ff",
+                            colour = "#25396f",
+                            overlayColour = "grey",
+                            overlayOpacity = 0.6,
+                            refreshColour = "brown",
+                            css=""
+                          )
+                          
+                          
+                                       }}
+                                      
+
+        </section>
+
+
+    
+   </div> 
+</div>
+<div id="main">
+    <header class="mb-3" id="site-header">
+        <a href="#main" class="burger-btn d-block d-xl-none">
+            <i class="bi bi-justify fs-3"></i>
+        </a>
+    </header>
+     <div class="page-heading" id="createmodelhead">
+        <h2>GBApp: Create Model</h2>
+    </div> 
+   <div class="page-content"> 
+        <section class="row">
+  <div class="col-12 col-md-6">
+                            <div id='createmodel' class="card">
+                                <div class="card-header" style="display: flex; align-items: center; justify-content: space-between;">
+                                    <h4>Create your model</h4>
+      <div class="help-tip">
+    <p>
+        Here, you can create your GBA model by selecting the number of metabolites and reactions. The first tab displays the Mass Fraction matrix (M) of your model. Ensure that the M matrix is mass normalized: the sum of metabolite fractions should equal -1, and the sum of product fractions should equal +1 for each reaction.
+    </p>
+</div>
+
+                                    <div id="loading" style="display: flex; justify-content: flex-end;" data-display-if="$(&#39;html&#39;).hasClass(&#39;shiny-busy&#39;)" data-ns-prefix="">              
+                                           <img src="./assets/compiled/svg/audio.svg" class="me-4" style="width: 1.3rem" alt="audio">
+                                            </div>
+                                </div>
+
+                            <div class="card-body">
+
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab"
+                                                aria-controls="home" aria-selected="true">Mass fraction</a>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab"
+                                                aria-controls="profile" aria-selected="false">Km</a>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact" role="tab"
+                                                aria-controls="contact" aria-selected="false">KI</a>
+                                        </li>
+                                         <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="KA-tab" data-bs-toggle="tab" href="#KA" role="tab"
+                                                aria-controls="KA" aria-selected="false">KA</a>
+                                        </li>
+                                         <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="kcat-tab" data-bs-toggle="tab" href="#kcat" role="tab"
+                                                aria-controls="kcat" aria-selected="false">kcat</a>
+                                        </li>
+                                         <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="Rho-tab" data-bs-toggle="tab" href="#Rho" role="tab"
+                                                aria-controls="Rho" aria-selected="false">Condition</a>
+                                        </li>
+                                    </ul>
+                                    <br>
+                                    <div class="tab-content" id="myTabContent">
+                                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                                                                {{
+                                                                  tabPanel("Mass_Fraction", icon = icon("table"),
+                                                        selectInput("nrow", "Number of Metabolites:", choices = 3:10, selected = 3),
+                                                        # Numeric input for number of columns
+                                                        selectInput("ncol", "Number of Reactions:", choices = 2:10, selected = 3),
+
+                                                        # Matrix input widget
+                                                        matrixInput("matrix1", "Create your mass fraction matrix",
+                                                                    value = matrix(0, 3, 3),
+                                                                    rows = list(names = TRUE,
+                                                                                editableNames = TRUE),
+                                                                    cols = list(names = TRUE,
+                                                                                editableNames = TRUE),class = "numeric",inputClass = "table-container"))
+
+
+                                                                }}
+
+
+                                        </div>
+                                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                                          {{
+                                                           tabPanel("Km", icon = icon("table"), 
+
+                                                    # Matrix input widget
+                                                    matrixInput("matrix2", "Create your Km matrix",
+                                                                value = matrix(0, 3, 3),
+                                                                rows = list(names = TRUE,
+                                                                            editableNames = TRUE),
+                                                                cols = list(names = TRUE,
+                                                                            editableNames = TRUE),class = "numeric",inputClass = "table-container"))
+
+                                                          }}
+                                      <div class="help-tip">
+    <p>
+        This section displays the Michaelis Constant (Km) matrix of your created GBA model. Make sure each substrate in your reactions has a valid Km value; otherwise, a default value of 0.1 g/L will be used. You can also search for Km values in the table below, sourced from the BRENDA database. Please ensure Km values are mass balanced and converted to g/L by multiplying the Km values in molar units by the molecular weights of the respective substrates.
+    </p>
+</div>
+                                        <br>
+                                           <div class="accordion" id="accordionExample">
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingTwo">
+                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                        Michaelis constant data
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                                        <div class="accordion-body">
+                                                                        {{
+                                                                        table1=reactableOutput("data_table")
+                                                                        }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                                                 {{
+                                                                 tabPanel("KI", icon = icon("table"),
+
+                                                            # Matrix input widget
+                                                            matrixInput("matrix3", "Create your Inhibition matrix",
+                                                                        value = matrix(0, 3, 3),
+                                                                        rows = list(names = TRUE,
+                                                                                    editableNames = TRUE),
+                                                                        cols = list(names = TRUE,
+                                                                                    editableNames = TRUE),class = "numeric",inputClass = "table-container"))
+                                                                }}
+                                                                  <div class="help-tip">
+    <p>
+        This section displays the Inhibition Constant (KI) matrix of your uploaded GBA model. You can modify the values directly here.
+    </p>
+</div>
+                                        </div>
+                                         <div class="tab-pane fade" id="KA" role="tabpanel" aria-labelledby="KA-tab">
+                                                                 {{
+                                                            # Sub tab for matrix 4
+                                                   tabPanel("KA", icon = icon("table"),
+
+                                                            # Matrix input widget
+                                                            matrixInput("matrix4", "Create your activation matrix",
+                                                                        value = matrix(0, 3, 3),
+                                                                        rows = list(names = TRUE,
+                                                                                    editableNames = TRUE),
+                                                                        cols = list(names = TRUE,
+                                                                                    editableNames = TRUE),class = "numeric",inputClass = "table-container"))
+                                                   }}
+                                                <div class="help-tip">
+    <p>
+        This section displays the Activation constant (KA) matrix of your uploaded GBA model. You can modify the values directly here.
+    </p>
+</div>
+                                        </div>
+                                        <div class="tab-pane fade" id="kcat" role="tabpanel" aria-labelledby="kcat-tab">
+                                                            {{
+
+                                           # Sub tab for matrix 5
+                                           tabPanel("kcat", icon = icon("table"),
+
+                                                    # Matrix input widget
+                                                    matrixInput("matrix5", "Create your kcat matrix",
+                                                                value = matrix(0, 2, 3),
+                                                                rows = list(names = TRUE,
+                                                                            editableNames = TRUE),
+                                                                cols = list(names = TRUE,
+                                                                            editableNames = TRUE),class = "numeric",inputClass = "table-container") )
+                                                            }}
+        <div class="help-tip">
+    <p>
+        This section displays the Turnover Number (kcat) matrix of your created GBA model. You can search for kcat values in the table below, sourced from the BRENDA database. Ensure that kcat values are mass balanced and converted to 1/h (mass of product/mass of enzyme/hour) by multiplying the kcat values in 1/h units by the molecular weight of the respective product and dividing by the mass of its enzyme. "kcatf" and "kcatb" indicates the kcat for forward and backward reactions, respectively.
+    </p>
+</div>
+                                            <br>
+                                           <div class="accordion" id="accordionExample">
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="headingOne">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                    Turnover number (kcat)
+                                                    </button>
+                                                </h2>
+                                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body">
+                                                                {{
+                                                                table2=reactableOutput("data_kcat")
+                                                                }}
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="Rho" role="tabpanel" aria-labelledby="Rho-tab">
+                                                                         {{
+
+                                                              # Sub tab for matrix 6
+                                                           tabPanel("Condition", icon = icon("table"),
+                                                                    # Numeric input for number of rows
+
+                                                                    
+                                                                    # Numeric input for number of columns
+                                                                    selectInput("ncol6", "Number of Conditions:", choices = 2:20, selected = 5),
+                                                                    # Matrix input widget
+                                                                    matrixInput("matrix6", "Enviornmental conditions",
+                                                                                value = matrix(0, 2, 2),
+                                                                                rows = list(names = TRUE,
+                                                                                            editableNames = TRUE),
+                                                                                cols = list(names = TRUE,
+                                                                                            editableNames = TRUE),class = "numeric",inputClass = "table-container")
+                                                                    
+                                            )
+                                                                            }}
+                      <div class="help-tip">
+    <p>
+        This section displays the External Concentration and Cell Density matrix. You can select the desired number of conditions and external metabolites. The parameter "Rho" represents the cell density in your model, while the other rows show the external concentrations. Ensure that all external concentrations are labeled with "x_". You can modify these values and rerun the optimization by clicking "Run" to see the changes. To download the latest version of your edited GBA model, click "Download."
+    </p>
+</div>
+                                                                                 <div id="advanced1">
+                                  <button class="btn btn-outline-primary col-12" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="true" aria-controls="collapseExample1">
+                                Advanced Options
+                            </button>
+                            
+                          
+                            
+                            <div class="collapse form-check-label" id="collapseExample1" style="">
+                            {{
+                         fluidRow(
+  selectInput("input11", "Choose a mode:", choices = c("Non-linear Solver")),
+  selectInput("input21", "Choose a parameter:", choices = NULL) # Empty choices initially
+)
+                            }}
+                        </div>
+                        </div>
+
+<div class="button-container" style="display: flex; align-items: center;">
+                                               <button class="btn btn-default action-button btn btn-primary rounded-pill"  id="runModelBtn2" type="button">Run</button>
+                                               <button id="alert2" type="button" class="btn btn-default action-button btn btn-success rounded-pill">Check Model</button>
+                                                   <button id="refresh1" type="button" class="btn btn-default action-button btn btn-danger rounded-pill">Reset</button>
+                                                     {{
+                                    downloadButton("downloadModel1", "Download", class="btn btn-dark rounded-pill" )
+                                    }}
+                                                                
+                                               <div id="downloadresult1">
+                                                 <div data-display-if="input.y_axis1" data-ns-prefix="">
+      <a id="downloadData1" type="button" class="btn btn-default shiny-download-link btn btn-secondary rounded-pill" href="" target="_blank" download>
+        <i class="fas fa-download" role="presentation" aria-label="download icon"></i>
+        Results
+      </a>
+      </div>
+    </div>
+    </div>
+                                                   
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-display-if="input.y_axis1" data-ns-prefix="">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-3 justify-content-start ">
+                                            <div class="stats-icon purple mb-2">
+                                                <i class="iconly-boldGraph"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <h5 class="text-muted font-semibold"style="text-align: left;font-size: 16px;" >Number of Conditions</h5>
+                                            <h5 class="font-extrabold mb-0">{{ textOutput("Nrcond1") }}</h5>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card"> 
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-3 justify-content-start ">
+                                            <div class="stats-icon blue mb-2">
+                                                <i class="iconly-boldChart"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <h5 class="text-muted font-semibold"style="text-align: left;font-size: 16px;" >Maximum Growth rate</h5>
+                                            <h5 class="font-extrabold mb-0 d-flex align-items-baseline">{{ textOutput("maxgr1") }}&nbsp;h<sup>-1</sup></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-3 justify-content-start ">
+                                            <div class="stats-icon green mb-2">
+                                                <i class="iconly-boldDiscovery"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <h6 class="text-muted font-semibold"style="text-align: left; font-size: 16px;">Average of Total Protein Concentration</h6>
+                                            <h5 class="font-extrabold mb-0 d-flex align-items-baseline"style="white-space: nowrap;">{{ textOutput("totpr1") }}&nbsp;[g L<sup>-1</sup>]</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-3 justify-content-start ">
+                                            <div class="stats-icon red mb-2">
+                                                <i class="iconly-boldTick-Square"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <h6 class="text-muted font-semibold"style="text-align: left;font-size: 16px;" >Number of Converged Optimizations</h6>
+                                            <h5 class="font-extrabold mb-0">{{ textOutput("convergence11") }}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+              
+                       </div>
+                                  
+                <div class="col-12  col-md-6">
+                  <div class="card">
+                    <div class="card-header">
+                        <h4>Interactive Plots</h4>
+                    <div class="help-tip">
+    <p>
+        In this section, you can visualize the results by selecting different axes, such as Growth Rate, Protein Fractions/Concentrations, Fluxes, and more.
+    </p>
+</div>
+                    </div>
+                    <div class="card-body">
+                                                  {{
+                                               fluidRow(    
+                                  selectInput("x_axis1", "Select X-axis", ""),
+                                  selectInput("y_axis1", "Select Y-axis", "")
+                                  )
+                                                  }}
+                        <br> 
+                        <br> 
+
+                        <div data-display-if="input.y_axis1 &amp;&amp; input.y_axis1!='protein_fractions'&amp;&amp; input.y_axis1!='protein_concentration'&amp;&amp; input.y_axis1!='reaction_fluxes'&amp;&amp; input.y_axis1!='metabolite_concentration'" data-ns-prefix="">
+                                   {{
+
+
+
+
+                                   apexchartOutput("scatter_plot21")
+
+                                   }}
+                         </div>
+                         <div data-display-if="input.y_axis1 == 'protein_fractions'" data-ns-prefix="">
+                                {{
+
+                                    apexchartOutput("scatter_plot1")
+
+                                                }}
+                          </div>
+                          <div data-display-if="input.y_axis1 == 'protein_concentration'" data-ns-prefix="">
+                               {{
+
+                                 apexchartOutput("scatter_plot31")
+
+                                }}
+                          </div>
+                          <div data-display-if="input.y_axis1 == 'reaction_fluxes'" data-ns-prefix="">
+                               {{
+
+                                 apexchartOutput("scatter_plot41")
+
+                              }}
+                          </div>
+                          <div data-display-if="input.y_axis1 == 'metabolite_concentration'" data-ns-prefix="">
+                               {{
+
+                                 apexchartOutput("scatter_plot51")
+
+                                }}
+                          </div>
+                        </div>
+                    </div>
+                                                                    <div class="col-12">
+                  <div class="card"> 
+                  <div class="card-header">
+                        <h4>Pathway Visualization</h4>
+                       <div class="help-tip">
+    <p>
+        In this section, you can view the network visualization of your GBA model. The dot size represents metabolite concentrations, while the line thickness indicates protein concentrations, both as results from the optimization. You can download the visualization results below.
+    </p>
+</div>
+                    </div>
+      <div class="card-body"> 
+      <div class="row">
+<div id="d3flux001"></div>
+<div id="d3flux001_options">
+  <button type="button" class="download btn btn-primary rounded-pill">Save JSON</button>
+  <button type="button" class="reactionbutton btn btn-success rounded-pill ">Show Reaction Nodes</button>
+  <button type="button" class="svgbutton btn btn-info rounded-pill ">Download SVG</button>
+  <button type="button"  id= "toggleZoomButton1" class="btn btn-warning rounded-pill">Enable Zoom</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+                 </div>
+
+        </section>
+        </div>
+       </div> 
+<div id="main">
+    <header class="mb-3" id="site-header">
+        <a href="#main" class="burger-btn d-block d-xl-none">
+            <i class="bi bi-justify fs-3"></i>
+        </a>
+    </header>
+           
+    <div class="page-heading" id="contactus">
+        <h2>Tutorial</h2>
+    </div> 
+    <div class="page-content"> 
+        <section class="row">
+            <div class="col-md-9 ">
+                            <div class="card">
+                              <div class="tutorial-container" id="tutorialinfo">
+                              <!-- Page 1 -->
+                               <div class="tutorial-page" id="getting-started">
+                                <div class="card-header" >
+                                    <h4>Getting Started with GBApp</h4>
+                              
+                                </div>
+                                  <div class="card-body">
+                        <p style="text-align: justify;">Welcome to GBApp, your user-friendly platform for exploring Growth Balance Analysis (GBA) in metabolic modeling. GBApp is designed to make modeling cellular growth and metabolism accessible to all, from seasoned computational researchers to newcomers. Unlike traditional tools focused on linear models, GBApp brings a nonlinear approach that considers the crucial role of metabolite concentrations and reaction kinetics in shaping cellular processes.
+
+In this tutorial, you’ll be introduced to GBApp's intuitive interface, where you can easily construct and analyze GBA models without needing to code. You’ll see how GBApp integrates with the BRENDA enzyme database, allowing you to retrieve essential kinetic parameters like turnover numbers and Michaelis constants to create more accurate models. We’ll guide you through using our interactive visualization tools—customizable plots and dynamic pathway maps—that make it simple to interpret your results and gain insights into cellular resource allocation and proteome efficiency.
+
+With GBApp, you can dive into the complexities of cellular metabolism with ease, empowering you to explore, collaborate, and drive new insights in the field. <strong>GBApp is freely accessible to all users, promoting open science and collaboration within the research community. </strong>
+            </p>
+
+                        <h5>Model Input</h5>
+                        <p style="text-align: justify;">In GBApp, uploading your GBA model is straightforward.
+                        As shown in the figure, users can start by uploading the model file in an open-source spreadsheet format (ODS) via the “Choose File” button. 
+                        If you haven’t yet prepared your model, you can download a preformatted GBA template using the “Download GBA template” button (Figure 1).
+                        This template provides a structured example that includes all required matrices and columns, helping you set up your model correctly.</p>
+                      <!-- Image section -->
+<div style="text-align: center;">
+    <img src="./assets/Downloadtemplate.png" alt="GBApp model upload interface" style="max-width: 60%; height: auto;">
+    <p><em>Figure 1: Interface for uploading your GBA model file and downloading the GBA template in GBApp.</em></p>
+</div>
+                    </div>
+                    </div>
+                    <!-- Page 2 -->
+   <div class="tutorial-page" id="mass-fraction">
+    <div class="card-header">
+        <h4>Mass Fraction Matrix (M)</h4>
+    </div>
+    <div class="card-body">
+        <p style="text-align: justify;">
+            The mass fraction matrix <strong>M</strong> is derived from the stoichiometric matrix <strong>S</strong> and represents the distribution of mass for each reactant across the system's reactions. Each row in <strong>M</strong> corresponds to a metabolite, while each column corresponds to a reaction.
+        </p>
+        <ul>
+            <li>Rows starting with "<strong>x_</strong>" represent external metabolites.</li>
+            <li>The last row, labeled "<strong>Protein</strong>", represents the cumulative mass of all proteins.</li>
+            <li>The last column, labeled "<strong>Ribosome</strong>", indicates the ribosome reaction responsible for synthesizing proteins.</li>
+        </ul>
+
+        <p style="text-align: justify;">
+            To illustrate, let’s look at a basic biological reaction where a substrate is converted into a product, facilitated by an enzyme, and ultimately leading to the production of a protein. The following reactions break down this process:
+        </p>
+
+        <!-- Image section for Schematic -->
+        <div style="text-align: center;">
+            <img src="./assets/Fig1-Page-2.png" alt="Example of Mass Fraction Matrix (M)" style="max-width: 60%; height: auto;">
+            <p><em>Figure: Schematic representation of the simplified GBA model</em></p>
+        </div>
+
+        <h5>Example Biological Reactions with Two Redundant Pathways</h5>
+        <ol>
+            <li><strong>Reaction 1</strong>: Glucose (G) is taken up from the external environment (x_G) and converted into an intermediate.
+                <br><em>Reaction equation:</em> <code>x_G → G</code><br>
+                <em>Stoichiometry:</em> Glucose (x_G) is consumed (-1), and intracellular Glucose (G) is produced (+1).
+            </li>
+            <li><strong>Reaction 2</strong>: Nitrogen (N) is imported from the external environment (x_N) for further cellular processes.
+                <br><em>Reaction equation:</em> <code>x_N → N</code><br>
+                <em>Stoichiometry:</em> External Nitrogen (x_N) is consumed (-1), producing intracellular Nitrogen (N) (+1).
+            </li>
+            <li><strong>Reaction 3</strong>: Synthesis of amino acids (AA) requires both Glucose (G) and Nitrogen (N) as inputs.
+                <br><em>Reaction equation:</em> <code>G + 5N → AA</code><br>
+                <em>Stoichiometry:</em> Inputs are 1 unit of Glucose and 5 units of Nitrogen. The molecular weight of Glucose is 180 g/mol, and the molecular weight of Nitrogen is 14 g/mol.
+                <br><em>Normalization:</em>
+                <ul>
+                    <li>For Glucose: <code>(1 * 180) / ((1 * 180) + (5 * 14)) = 180 / 250 = 0.72</code></li>
+                    <li>For Nitrogen: <code>(5 * 14) / ((1 * 180) + (5 * 14)) = 70 / 250 = 0.28</code></li>
+                </ul>
+                Normalized Stoichiometry: Glucose contributes 0.72 to the mass fraction, and Nitrogen contributes 0.28.
+            </li>
+            <li><strong>Reaction 4</strong>: Synthesis of amino acids (AA) by another enzyme, which also requires both Glucose (G) and Nitrogen (N) as inputs.
+                <br><em>Reaction equation:</em> <code>G + 3N → AA</code><br>
+                <em>Stoichiometry:</em> Inputs are 1 unit of Glucose and 3 units of Nitrogen.
+                <br><em>Normalization:</em>
+                <ul>
+                    <li>For Glucose: <code>(1 * 180) / ((1 * 180) + (3 * 14)) = 180 / 222 ≈ 0.81</code></li>
+                    <li>For Nitrogen: <code>(3 * 14) / ((1 * 180) + (3 * 14)) = 42 / 222 ≈ 0.19</code></li>
+                </ul>
+                Normalized Stoichiometry: Glucose contributes 0.81 to the mass fraction, and Nitrogen contributes 0.19.
+            </li>
+            <li><strong>Ribosome Reaction</strong>: The ribosome uses amino acids to synthesize proteins, representing ongoing cellular production of proteins.
+                <br><em>Reaction equation:</em> <code>AA + 2N → Protein</code><br>
+                <em>Stoichiometry:</em> The ribosome reaction consumes amino acids and nitrogen, and produces proteins.
+            </li>
+        </ol>
+
+        <h5>Constructing the Matrix</h5>
+        <p style="text-align: justify;">
+            The values in each column reflect the stoichiometric coefficients of each reactant in the reaction. To form the mass fraction matrix <strong>M</strong>, each stoichiometric value is converted to mass units by multiplying by the molecular mass of each metabolite. Additionally, the matrix is normalized to ensure mass balance, with the sum of negative entries equal to -1 and the sum of positive entries equal to +1 for each reaction.
+        </p>
+
+        <h5>Example of Normalized Values in the Mass Fraction Matrix (M)</h5>
+        <p style="text-align: justify;">
+            Here’s a closer look at each column in the matrix based on our example:
+        </p>
+        <ul>
+            <li><strong>rxn1</strong>: x_G is consumed (-1), producing G (+1).</li>
+            <li><strong>rxn2</strong>: x_N is consumed (-1), producing N (+1).</li>
+            <li><strong>rxn3</strong>: Glucose and Nitrogen are partially consumed (-0.72, -0.28) to produce amino acids (AA, +1).</li>
+            <li><strong>rxn4</strong>: Glucose and Nitrogen are partially consumed (-0.81, -0.19) to produce amino acids (AA, +1).</li>
+            <li><strong>Ribosome</strong>: Amino acids and Nitrogen are consumed (-0.8, -0.2), and Protein is produced.</li>
+        </ul>
+
+        <p style="text-align: justify;">
+            These normalized coefficients ensure mass balance and accurately represent how cellular resources are allocated in each reaction, with the values in the matrix reflecting the mass fractions of each reactant moving into and out of each reaction.
+        </p>
+
+        <!-- Image section for M matrix -->
+        <div style="text-align: center;">
+            <img src="./assets/Mmatrix.png" alt="Example of Mass Fraction Matrix (M)" style="max-width: 60%; height: auto;">
+            <p><em>Figure: Example of a Mass Fraction Matrix (M) for a cellular system. This matrix illustrates the normalized mass fractions for each metabolite across different reactions.</em></p>
+        </div>
+    </div>
+</div>
+                     <!-- Page 3 -->
+                    <div class="tutorial-page" id="kinetic-parameters">
+    <div class="card-header">
+        <h4>Kinetic Parameters</h4>
+    </div>
+    <div class="card-body">
+        <p style="text-align: justify;">
+            Kinetic parameters are essential for accurately modeling the behavior of enzymes in cellular reactions. In GBApp, the kinetic parameters are organized into several matrices that provide values for Michaelis constants (<strong>K</strong>), inhibition and activation constants (<strong>KI</strong> and <strong>KA</strong>), and turnover numbers (<strong>kcat</strong>). These matrices correspond to the structure of the mass fraction matrix <strong>M</strong> to ensure consistency across the model.
+        </p>
+
+        <h5>K Matrix (Michaelis Constant Matrix)</h5>
+        <p style="text-align: justify;">
+            The <strong>K</strong> matrix stores the Michaelis constant (<strong>K<sub>m</sub></strong>) values for each reaction. These values describe the substrate concentration at which the reaction rate is half of its maximum value, giving insight into the affinity between an enzyme and its substrate.
+        </p>
+        <ul>
+            <li>The <strong>K</strong> matrix provides <strong>K<sub>m</sub></strong> values for the substrates of each enzyme.</li>
+            <li>To ensure consistency, all <strong>K<sub>m</sub></strong> values originally measured in [mol L⁻¹] are converted to [g L⁻¹] by multiplying by the molecular mass of the substrates.</li>
+            <li>The row and column labels of this matrix match those in the mass fraction matrix <strong>M</strong>.</li>
+            <li>If no <strong>K<sub>m</sub></strong> value is available for a given enzyme-substrate pair, a default value of 0.1 is used.</li>
+        </ul>
+        <!-- Image section for Kmatrix -->
+        <div style="text-align: center;">
+            <img src="./assets/Kmatrix.png" alt="Example of Mass Fraction Matrix (M)" style="max-width: 60%; height: auto;">
+            <p><em>Figure: Example of the K Matrix (Michaelis Constant Matrix) for a cellular system.</em></p>
+
+        </div>
+
+        <h5>KI and KA Matrices (Inhibition and Activation Constants)</h5>
+        <p style="text-align: justify;">
+            The <strong>KI</strong> and <strong>KA</strong> matrices represent inhibition and activation constants, respectively, for specific enzymes in the cell. These constants provide additional regulatory details about how inhibitors or activators affect enzyme activity.
+        </p>
+        <ul>
+            <li><strong>KI</strong> stores inhibition constants for enzyme-substrate pairs, indicating the effect of inhibitors.</li>
+            <li><strong>KA</strong> stores activation constants, representing the influence of activators on enzyme activity.</li>
+            <li>The row and column labels of these matrices are aligned with those in the mass fraction matrix <strong>M</strong>.</li>
+            <li>If no values are provided for a given enzyme in <strong>KI</strong> or <strong>KA</strong>, the model assumes no inhibition or activation effects for that enzyme.</li>
+        </ul>
+ <!-- Image section for KAmatrix -->
+        <div style="text-align: center;">
+            <img src="./assets/KAmatrix.png" alt="Example of Mass Fraction Matrix (M)" style="max-width: 60%; height: auto;">
+            <p><em>Figure: Example of the KI and KA Matrices (Inhibition and Activation Constants) for a cellular system.</em></p>
+        </div>
+
+        <h5>kcat Matrix (Turnover Number Matrix)</h5>
+        <p style="text-align: justify;">
+            The <strong>kcat</strong> matrix stores the turnover numbers (<strong>kcat</strong>) for enzymes within the cell, which represent the number of substrate molecules converted to product per enzyme molecule per unit time. The turnover number is critical for understanding the efficiency of enzymes in catalyzing reactions.
+        </p>
+        <ul>
+            <li>The matrix contains two rows:
+                <ul>
+                    <li><strong>kcat_f</strong>: Turnover numbers for forward reactions.</li>
+                    <li><strong>kcat_b</strong>: Turnover numbers for backward reactions.</li>
+                </ul>
+            </li>
+            <li>The column labels in the <strong>kcat</strong> matrix correspond to those in the mass fraction matrix <strong>M</strong>.</li>
+            <li><strong>kcat</strong> values are typically expressed in units of [h⁻¹], which is the number of reactions catalyzed per enzyme molecule per hour.</li>
+            <li>To maintain unit consistency, <strong>kcat</strong> values in [h⁻¹] should be adjusted by multiplying by the molecular mass of the product and dividing by the mass of the enzyme.</li>
+        </ul>
+<!-- Image section for kcatmatrix -->
+        <div style="text-align: center;">
+            <img src="./assets/kcatmatrix.png" alt="Example of Mass Fraction Matrix (M)" style="max-width: 60%; height: auto;">
+      <p><em>Figure: Example of the kcat Matrix (Turnover Number Matrix) for a cellular system.</em></p>
+        </div>
+        <h5>Example Calculation for kcat and Km</h5>
+        <p style="text-align: justify;">
+            Here’s an example of the parameters needed for calculating the Michaelis constant (<strong>K<sub>m</sub></strong>) and turnover number (<strong>k<sub>cat</sub></strong>) for the ribosome:
+        </p>
+         <!-- Parameter Table -->
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+            <thead>
+                <tr>
+                    <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Parameter</th>
+                    <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;">Michaelis constant for ribosome (K<sub>m</sub>')</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">3 × 10<sup>-6</sup> mol L<sup>-1</sup></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;">Number of ternary complex types</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">40</td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;">Molecular weight of ternary complex</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">69,167 g mol<sup>-1</sup></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;">Turnover number (k<sub>cat</sub>)</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">22 AA s<sup>-1</sup></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;">Molecular weight of amino acid</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">132.60 g mol<sup>-1</sup></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;">Molecular weight of ribosome</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">2,306,967 Da</td>
+                </tr>
+            </tbody>
+        </table>
+  <h5>Calculation Steps</h5>
+        <ul>
+            <li><strong>Michaelis Constant (Km)</strong>:
+                <br><em>Calculation</em>: <code>K<sub>m</sub> = 40 × 3 × 10<sup>-6</sup> mol L<sup>-1</sup> × 69,167 g mol<sup>-1</sup> = 8.3 g L<sup>-1</sup></code>.
+            </li>
+            <li><strong>Turnover Number (kcat)</strong>:
+                <br><em>Calculation</em>: <code>k<sub>cat</sub> = 22 AA s<sup>-1</sup> × (132.60 g AA<sup>-1</sup> / 2,306,967 g mol<sup>-1</sup>) × 3600 s h<sup>-1</sup> = 4.55 h<sup>-1</sup></code>.
+            </li>
+        </ul>
+
+        <p style="text-align: justify;">
+            This example illustrates the conversion and normalization of <strong>K<sub>m</sub></strong> and <strong>k<sub>cat</sub></strong> values to match the mass concentration units used in GBApp, ensuring accurate kinetic parameter representation in the model.
+        </p>
+        <h5>Retrieving Kinetic Data from BRENDA</h5>
+        <p style="text-align: justify;">
+            Below each matrix creation area, GBApp provides access to the BRENDA database in an interactive table format. This table enables you to search and filter data to find specific kinetic values:
+        </p>
+        <ul>
+            <li><strong>Michaelis Constant Data</strong>: The table allows you to search for <strong>K<sub>m</sub></strong> values by enzyme name, EC number, or organism. In the example shown below, you can see data entries for enzymes such as "(-)-11-nor-9-carboxy-DELTA9-tetrahydrocannabinol."</li>
+            <li><strong>Filter Options</strong>: Filter fields at the top of the table allow you to narrow down results based on specific EC number digits or organisms, making it easy to find relevant kinetic values for your model.</li>
+        </ul>
+         <!-- Image Section -->
+        <div style="text-align: center;">
+            <img src="./assets/Brendatable.png" alt="Michaelis constant data table" style="max-width: 40%; height: auto;">
+            <p><em>Figure: Michaelis constant (K<sub>m</sub>) data retrieved from BRENDA, displayed in an interactive table for easy filtering and selection.</em></p>
+        </div>
+        <p style="text-align: justify;">
+            These matrices provide the fundamental kinetic parameters needed to capture the dynamics of cellular reactions in your GBA model. By incorporating <strong>K</strong>, <strong>KI</strong>, <strong>KA</strong>, and <strong>kcat</strong> matrices, GBApp allows for a more detailed and accurate representation of metabolic processes, enabling users to model enzyme behavior under different conditions effectively.
+        </p>
+    </div>
+</div>
+
+                    <!-- Page 4 -->
+                     <div class="tutorial-page" id="conditions">
+    <div class="card-header">
+        <h4>Conditions</h4>
+    </div>
+    <div class="card-body">
+        <p style="text-align: justify;">
+            The <strong>Conditions</strong> matrix is used to define the cellular density and external concentrations for each condition in the model. This matrix allows you to specify different environmental conditions, which can then be optimized during the analysis in GBApp.
+        </p>
+
+        <h5>Structure of the Conditions Matrix</h5>
+        <p style="text-align: justify;">
+            The <strong>Conditions</strong> matrix consists of rows and columns that store values for different aspects of the cellular environment:
+        </p>
+        <ul>
+            <li><strong>First Row ("rho")</strong>: Represents the cell density in units of [g L⁻¹]. This value applies to each condition in the matrix.</li>
+            <li><strong>External Reactants</strong>: Starting from the second row, each row represents the concentration of an external reactant in the environment. Each reactant is labeled with "x_" followed by a unique identifier (e.g., x_G for glucose, x_N for nitrogen).</li>
+            <li><strong>Columns</strong>: Each column represents a specific environmental condition for the cell. This setup allows you to define multiple conditions, each with its own set of cell density and external reactant concentrations.</li>
+        </ul>
+
+        <p style="text-align: justify;">
+            The exact number of rows for external reactants depends on the number of reactants included in the model. Each reactant’s concentration is entered in units of [g L⁻¹] to maintain consistency across the model.
+        </p>
+
+        <h5>Example Setup of a Conditions Matrix</h5>
+        <p style="text-align: justify;">
+            Here’s an example layout of a Conditions matrix that includes cell density and two external reactants across three different conditions:
+        </p>
+
+        <!-- Example Table for Conditions Matrix -->
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+            <thead>
+                <tr>
+                    <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Reactant/Condition</th>
+                    <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">1</th>
+                    <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">2</th>
+                    <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">3</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><strong>rho</strong></td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">340 g L⁻¹</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">340 g L⁻¹</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">340 g L⁻¹</td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;">x_G</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">5.0 g L⁻¹</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">4.5 g L⁻¹</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">4.0 g L⁻¹</td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;">x_N</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">1.5 g L⁻¹</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">1.2 g L⁻¹</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">1.0 g L⁻¹</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h5>Explanation of the Example</h5>
+        <p style="text-align: justify;">
+            In this example, the first row labeled <strong>rho</strong> defines the cell density for each condition. The next two rows represent the concentrations of two external reactants, glucose (x_G) and nitrogen (x_N), in [g L⁻¹]. Each column corresponds to a different condition, allowing for variations in cell density and reactant concentrations across the conditions. 
+        </p>
+
+        <h5>Using the Conditions Matrix in Analysis</h5>
+        <p style="text-align: justify;">
+            By setting up multiple conditions, you can simulate different environmental scenarios within GBApp. During the analysis, these conditions can be optimized to understand how variations in cell density and external reactant concentrations affect cellular processes. This approach enables you to explore a range of scenarios and better understand the metabolic behavior of cells under different environmental conditions.
+        </p>
+        <!-- Image section for kcatmatrix -->
+        <div style="text-align: center;">
+            <img src="./assets/Conditionmatrix.png" alt="Example of Mass Fraction Matrix (M)" style="max-width: 60%; height: auto;">
+     <p><em>Figure: Example of the Conditions Matrix used in GBApp.</em></p>
+        </div>
+    </div>
+</div>
+
+                    <!-- Page 5 -->
+                     <div class="tutorial-page" id="creating-model">
+    <div class="card-header">
+        <h4>Creating Your GBA Model in GBApp</h4>
+    </div>
+    <div class="card-body">
+        <p style="text-align: justify;">
+            Alternatively, users can build their Growth Balance Analysis (GBA) models directly within the “Create Model” section of GBApp. This section is designed using the <strong>“shinyMatrix”</strong> package in R, which allows for a dynamic and intuitive experience when setting up model matrices. The user interface includes enhanced JavaScript features, such as arrow key scrolling and full-cell editing, to improve usability.
+        </p>
+
+        <h5>Getting Started</h5>
+        <p style="text-align: justify;">
+            To start creating your model, specify the number of metabolites and reactions required. These selections will automatically update the draft model, generating a blank mass fraction matrix for you to fill out. The interface ensures that as you name your reactions and metabolites, these labels are consistently applied across all model tabs.
+        </p>
+                <!-- Image Section -->
+        <div style="text-align: center;">
+            <img src="./assets/createmodelsection.png" alt="Create Model section in GBApp" style="max-width: 40%; height: auto;">
+            <p><em>Figure: The “Create Model” section in GBApp, where users can specify the number of metabolites and reactions, and input their mass fraction matrix.</em></p>
+        </div>
+
+        <h5>Automatic Labeling and Structure</h5>
+        <p style="text-align: justify;">
+            When entering names for your reactions and metabolites, GBApp automatically assigns these labels across all other tabs to maintain consistency. The labels “<strong>Ribosome</strong>” and “<strong>Protein</strong>” are predefined and automatically placed in the last column and row of the mass fraction matrix, respectively, to reflect the essential cellular components of protein synthesis.
+        </p>
+
+        <h5>Interactive Matrices</h5>
+        <p style="text-align: justify;">
+            The matrix creation tool provides full interactivity, allowing you to easily input and edit values. In each corresponding tab, you can also access collapsible cards that contain kinetic parameter data such as Michaelis constants (<strong>K<sub>m</sub></strong>) and turnover numbers (<strong>kcat</strong>). These parameters can be queried and adjusted to ensure unit consistency throughout your model.
+        </p>
+
+
+
+        <h5>Setting External Conditions</h5>
+        <p style="text-align: justify;">
+            In the final tab, labeled <strong>“Condition”</strong>, users can define the number of external reactants, including “<strong>rho</strong>” for cell density, and the total number of environmental conditions they wish to optimize. The condition matrix adjusts accordingly, enabling you to set various external concentrations for each condition.
+        </p>
+        <p style="text-align: justify;">
+            For simplicity, GBApp limits the number of reactions and metabolites to a maximum of 10 and the number of conditions to a maximum of 20, ensuring the model remains manageable and efficient.
+        </p>
+
+       <!-- Image Section -->
+        <div style="text-align: center;">
+            <img src="./assets/Conditioncreate.png" alt="Create Model section in GBApp" style="max-width: 40%; height: auto;">
+           <p><em>Figure: The “Condition” tab in GBApp, where users can define the number of external reactants, including cell density (rho), and specify up to 20 different environmental conditions.</em></p> 
+        </div>
+        <h5>Preview and Modify Your Model</h5>
+        <p style="text-align: justify;">
+            Once your model is Created or Uploaded, GBApp provides a comprehensive preview of your input data. This feature allows you to review and make modifications directly within the app, including adjustments to mass fractions, Michaelis constants (<strong>K<sub>m</sub></strong>), inhibition and activation constants (<strong>KI</strong> and <strong>KA</strong>), turnover numbers (<strong>kcat</strong>), and external conditions. When you are satisfied with your model, you can save it in the open-source spreadsheet (ODS) format for further analysis or refinement.
+        </p>
+
+        <p style="text-align: justify;">
+            This flexibility ensures that users can iteratively refine their models, enhancing accuracy and performance while making the modeling process accessible and intuitive.
+        </p>
+        <!-- Image Section -->
+        <div style="text-align: center;">
+            <img src="./assets/PreviewModel.png" alt="Create Model section in GBApp" style="max-width: 40%; height: auto;">
+<p><em>Figure: The “Preview Model” interface in GBApp, providing users with a detailed view of their input data. Users can easily make adjustments to mass fractions, Michaelis constants (K<sub>m</sub>), inhibition and activation constants (KI and KA), turnover numbers (kcat), and external conditions, ensuring flexibility and accuracy before saving the model in an open-source format.</em></p>        </div>
+    </div>
+</div>
+           <!-- Page 6 -->
+<div class="tutorial-page" id="validation">
+    <div class="card-header">
+        <h4>Model Validation and Numerical Optimization in GBApp</h4>
+    </div>
+    <div class="card-body">
+        <p style="text-align: justify;">
+            After importing your GBA model into GBApp, it is essential to ensure that your model meets the criteria required by the Growth Balance Analysis (GBA) framework. To assist users—especially those new to computational modeling—GBApp provides a helpful tool: the <strong>“Check Model”</strong> button.
+        </p>
+<!-- Image Section -->
+        <div style="text-align: center;">
+            <img src="./assets/Checkmodel.png" alt="Create Model section in GBApp" style="max-width: 40%; height: auto;">
+           <p><em>Figure: The “Check Model” feature in GBApp, designed to validate your GBA model and ensure compliance with the Growth Balance Analysis framework. </em></p>
+        </div>
+        <h5>Using the “Check Model” Feature</h5>
+        <p style="text-align: justify;">
+            The <strong>“Check Model”</strong> button allows you to verify that your model is correctly configured before running any analysis. While not mandatory, this validation step is highly recommended to ensure your model’s parameters are accurately imported and to identify any issues that need correction. The validation process performs the following checks:
+        </p>
+        <ul>
+          <!-- Image Section -->
+        <div style="text-align: center;">
+            <img src="./assets/validatedmodel.png" alt="Create Model section in GBApp" style="max-width: 40%; height: auto;">
+<p><em>Figure: The “Check Model” feature in GBApp, which performs a series of validation checks to ensure your model is correctly configured. This step is recommended to verify the accuracy of imported parameters and to identify potential issues before proceeding with further analysis.</em></p>
+
+        </div>
+          
+            <li>Ensures there are no missing (<strong>NA</strong>) or non-numeric values in the model.</li>
+            <li>Verifies that all matrices have consistent dimensions, meaning the same number of reactions and metabolites.</li>
+            <li>Checks that values for external conditions and cell density (<strong>rho</strong>) are greater than zero.</li>
+            <li>Scans the <strong>K<sub>m</sub></strong> matrix for missing values and issues a warning if any are found. Missing <strong>K<sub>m</sub></strong> values will be automatically assigned a default low value of 0.1 [g L⁻¹].</li>
+        </ul>
+          <!-- Image Section -->
+        <div style="text-align: center;">
+            <img src="./assets/Warningmessage.png" alt="Create Model section in GBApp" style="max-width: 40%; height: auto;">
+            <p><em>Figure: Example of a warning message in the “Check Model” feature of GBApp.</em></p>
+        </div>
+
+        <p style="text-align: justify;">
+            If the model fails to meet any of these criteria, an error message will be displayed. The message will guide you to reset the session and review your model for corrections. Once all checks are successfully passed, a notification will confirm that your model is validated and ready for analysis.
+        </p>
+ <!-- Image Section -->
+        <div style="text-align: center;">
+            <img src="./assets/Failedmessage.png" alt="Create Model section in GBApp" style="max-width: 40%; height: auto;">
+        <p><em>Figure: Example of an error message in the “Check Model” feature of GBApp. </em></p>
+        </div>
+        <h5>Running the Growth Balance Analysis</h5>
+        <p style="text-align: justify;">
+            Once your model is validated (or if you choose to skip the validation), you can initiate the growth balance analysis by clicking the <strong>“Run”</strong> button. GBApp uses the <strong>“nloptr”</strong> package in R to solve the non-linear optimization problem, employing the <em>AUGLAG</em> method—an augmented Lagrangian approach (Ypma and Johnson 2011).
+        </p>
+
+        <h5>Optimization Solvers and Methods</h5>
+        <p style="text-align: justify;">
+            The AUGLAG method in <strong>nloptr</strong> utilizes various sub-solvers, each designed for specific types of optimization problems. By default, GBApp uses the <strong>low-storage BFGS (LBFGS)</strong> solver due to its low memory usage and broad applicability. However, depending on the complexity and constraints of your model, you may select different solvers via the <strong>“Advanced option”</strong> collapsible card:
+        </p>
+        <ul>
+            <li><strong>LBFGS</strong>: Ideal for general-purpose optimization with efficient memory usage, suitable for large-scale models.</li>
+            <li><strong>Method of Moving Asymptotes (MMA)</strong>: Better suited for highly non-linear models with constraints, offering robust performance in complex scenarios.</li>
+            <li><strong>Sequential Quadratic Programming (SLSQP)</strong>: Effective for smaller models that require precise constraint management and high accuracy.</li>
+        </ul>
+
+        <p style="text-align: justify;">
+            Users should choose a solver based on the size and complexity of their model, as some solvers may yield faster convergence or higher accuracy for specific problem types. Experimenting with different solvers can help optimize performance for your particular model.
+        </p>
+
+        <h5>Convergence of the Non-Linear Solver</h5>
+        <p style="text-align: justify;">
+            In the context of numerical optimization, <strong>convergence</strong> refers to the process where the solver iteratively approaches an optimal solution within a specified tolerance level. Successful convergence indicates that the solver has found a solution that satisfies the optimization criteria, while failure to converge suggests that the solver was unable to meet these criteria within the set number of iterations or due to numerical difficulties.
+        </p>
+
+        <p style="text-align: justify;">
+            In <strong>nloptr</strong>, the convergence status is represented by an integer code. A convergence code of <strong>4</strong> signifies that the optimization was successful, meaning the solver has reached a solution that meets the required criteria. Any other convergence code indicates non-convergence, and it is recommended to review the model parameters or try a different solver or optimization method to achieve better results.
+        </p>
+        <!-- Image Section -->
+        <div style="text-align: center;">
+            <img src="./assets/Resultconvergence.png" alt="Create Model section in GBApp" style="max-width: 40%; height: auto;">
+            <p><em>Figure: Result of the convergence status displayed in GBApp after running the optimization process.</em></p>
+        </div>
+
+        <h5>Tracking the Optimization Progress</h5>
+        <p style="text-align: justify;">
+            During the numerical optimization process, GBApp displays a progress bar to keep you informed. The progress bar provides real-time updates, tracking the optimization status for each condition and giving you an estimate of how long the analysis will take. This feature ensures that you can monitor the optimization efficiently and plan your workflow accordingly.
+        </p>
+    </div>
+</div>        
+                     <!-- Page 7 -->
+<div class="tutorial-page" id="visualization">
+    <div class="card">
+        <div class="card-header">
+            <h4>Interactive Metabolic Pathway and Data Visualization</h4>
+        </div>
+        <div class="card-body">
+            <p style="text-align: justify;">
+                GBApp offers robust data visualization tools to help users interpret and analyze their Growth Balance Analysis (GBA) models effectively. Utilizing the <strong>“apexcharter”</strong> package (Perrier and Meyer 2019), GBApp generates interactive plots that display a wide array of outputs, including growth curves, protein concentrations, protein fractions, reaction fluxes, metabolite concentrations, and more.
+            </p>
+
+            <h5>Interactive Plots with apexcharter</h5>
+            <p style="text-align: justify;">
+                The plots generated are highly interactive, allowing users to zoom in and out, and pan through the data for a closer examination of specific trends or details. This interactivity facilitates a deeper understanding of the model's dynamics and helps in identifying critical patterns or anomalies in the data. Users can also download these figures in both SVG and JPEG formats for inclusion in reports or presentations.
+            </p>
+            <!-- Image Section -->
+            <div style="text-align: center;">
+                <img src="./assets/Interactiveplots.png" alt="Interactive plots in GBApp" style="max-width: 40%; height: auto;">
+                <p><em>Figure: Interactive plots generated using apexcharter, allowing for zooming, panning, and data exploration.</em></p>
+            </div>
+
+            <h5>Metabolic Pathway Visualization with d3flux</h5>
+            <p style="text-align: justify;">
+                GBApp integrates <strong>d3flux</strong> (<a href="https://github.com/pstjohn/d3flux">https://github.com/pstjohn/d3flux</a>) to automatically create and display metabolic pathway graphs of the GBA model directly on the web page. In these pathway diagrams, the thickness of the lines and nodes is proportional to the results from the GBA analysis, specifically reflecting the outcomes of the first condition provided in the model. This visual representation enhances biological understanding, enabling researchers to quickly identify key metabolic features or potential pathway errors.
+            </p>
+            <p style="text-align: justify;">
+                Users can interact with the pathway map by zooming in and out, dragging nodes to refine the layout, and viewing detailed information on metabolites and reactions by hovering over them. The pathway maps can also be saved as JSON files for future editing or downloaded as SVG files for easy sharing and inclusion in publications.
+            </p>
+            <!-- Image Section -->
+            <div style="text-align: center;">
+                <img src="./assets/Pathway.png" alt="Metabolic pathway visualization in GBApp" style="max-width: 40%; height: auto;">
+                <p><em>Figure: Metabolic pathway graph generated using d3flux, showcasing the interactive visualization of the GBA model.</em></p>
+            </div>
+
+
+            <h5>Overview of Key Results</h5>
+             <p style="text-align: justify;">
+                After running the Growth Balance Analysis (GBA) in GBApp, users can view an overview of key results to understand the performance and outcomes of their model. This summary includes important metrics such as the number of conditions applied to the model, the number of converged optimizations, the maximum growth rate achieved, and the average total protein concentration.
+            </p>
+                    <!-- Image Section -->
+            <div style="text-align: center;">
+                <img src="./assets/Keyresults.png" alt="Optimization Results Overview in GBApp" style="max-width: 40%; height: auto;">
+                <p><em>Figure: Overview of key optimization results displayed in GBApp, summarizing the number of conditions, convergence status, maximum growth rate, and average total protein concentration.</em></p>
+            </div>
+            <p style="text-align: justify;">
+                In this example, we applied <strong>15 conditions</strong> to solve the optimization problem. The solver successfully converged on all <strong>15 conditions</strong>, indicating that the model was well-defined and the optimization process was effective for each scenario.
+            </p>
+            <p style="text-align: justify;">
+                The model achieved a <strong>maximum growth rate of 2.03 [h⁻¹]</strong>, representing the highest rate at which the cell population increases under the given conditions. This metric is crucial for understanding the potential productivity and efficiency of the metabolic processes modeled.
+            </p>
+            <p style="text-align: justify;">
+                Additionally, the average total protein concentration across all conditions was <strong>232.51 [g L⁻¹]</strong>. This value provides insight into the overall protein content within the cells, which is significant for studies focusing on protein synthesis, metabolic capacity, and resource allocation within the organism.
+            </p>
+
+    
+
+            <h5>Downloading Numerical Optimization Results</h5>
+            <p style="text-align: justify;">
+                In addition to visual outputs, users can download the numerical optimization results as a CSV file. This feature provides easy access to raw data for further analysis or reporting. Users can import these results into other analytical tools or spreadsheets to perform custom analyses, create additional visualizations, or share data with collaborators.
+            </p>
+                 <!-- Image Section -->
+            <div style="text-align: center;">
+                <img src="./assets/resultscsv.png" alt="Optimization Results Overview in GBApp" style="max-width: 40%; height: auto;">
+<p><em>Figure:  Users can download results as a CSV file, which includes data such as Growth rate, protein concentrations, fluxes of the reactions, metabolite concentrations, etc.</em></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+          <!-- Page 8 -->
+<div class="tutorial-page" id="feedback">
+    <div class="card">
+        <div class="card-header">
+            <h4>Feedback</h4>
+        </div>
+        <div class="card-body">
+            <p style="text-align: justify;">
+                GBApp represents a significant advancement in making Growth Balance Analysis (GBA) more accessible to researchers who may not have extensive programming skills. The intuitive web interface simplifies the process of constructing and modifying models, allowing users to focus on exploring cellular growth and resource allocation under nonlinear kinetic rate laws without the steep learning curve typically associated with computational modeling.
+            </p>
+  <p style="text-align: justify;">
+                <strong>GBApp is freely accessible to all users, promoting open science and collaboration within the research community.</strong> 
+            </p>
+            <p style="text-align: justify;">
+                We welcome feedback from users to help us improve GBApp. If you have suggestions, encounter issues, or have ideas for new features, please reach out to us through <u><strong><a href="mailto:ghaffas@hhu.de">ghaffas@hhu.de</a></strong></u>. Your input is valuable in shaping the future development of GBApp to better serve the research community.
+            </p>
+        </div>
+    </div>
+</div>
+  
+
+                  
+            
+ </div>  
+                            </div>   
+                            </div>
+                             <!-- Table of Contents Sidebar -->
+            <div class="col-md-3">
+                <div class="toc-container">
+                    <h5>Table of Contents</h5>
+                    <ul class="toc-list">
+                        <li><a href="#getting-started">Getting Started</a></li>
+                        <li><a href="#mass-fraction">Mass Fraction Matrix</a></li>
+                        <li><a href="#kinetic-parameters">Kinetic Parameters</a></li>
+                        <li><a href="#conditions">External Conditions</a></li>
+                        <li><a href="#creating-model">Creating Your Model</a></li>
+                        <li><a href="#validation">Model Validation</a></li>
+                        <li><a href="#visualization">Visualization</a></li>
+                        <li><a href="#feedback">Feedback</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+    </div>
+          <footer>
+    <div class="footer clearfix mb-0 text-muted d-flex justify-content-between align-items-center">
+        <div class="float-start">
+          <p><a href="https://www.hhu.de/impressum">Impressum</a></p>
+            
+        </div>
+        <div class="mx-auto">
+          <p><a href="https://www.hhu.de/datenschutzerklaerung">Data Privacy</a></p>
+            
+        </div>
+        <div class="float-end text-end">
+                <p>&copy; 2024 All Rights Reserved By <a href="https://github.com/zuramai/mazer">Mazer</a></p>
+        </div>
+    </div>
+</footer>
+ </div>
+ 
+    <script src="assets/static/js/components/dark.js"></script>
+    <script src="assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+
+  
+    
+    <script src="assets/compiled/js/app.js"></script>
+    
+    <script src="assets/static/js/pages/dashboard.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+        <script src="assets/matrix-input.js"></script>
+    <script src="assets/d3visSJ.js"></script>
+     <script src="assets/d3visSJ1.js"></script>
+     
+    <script type="text/javascript">
+    
+document.addEventListener("DOMContentLoaded", function () {
+    const tutorialContainer = document.querySelector('.tutorial-container');
+    const tocLinks = document.querySelectorAll('.toc-list a');
+    const pages = document.querySelectorAll('.tutorial-page');
+
+    const idToLink = {};
+    tocLinks.forEach(link => {
+        const href = link.getAttribute("href");
+        if (href && href.startsWith("#")) {
+            const sectionId = href.substring(1);
+            idToLink[sectionId] = link;
+        }
+    });
+
+    tocLinks.forEach(link => {
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement && tutorialContainer) {
+                targetElement.scrollIntoView({ // Much simpler scrolling
+                    behavior: "smooth"
+                });
+
+                tocLinks.forEach(link => link.classList.remove("active"));
+                this.classList.add("active");
+            }
+        });
+    });
+
+    const observerOptions = {
+        root: tutorialContainer,
+        rootMargin: "0px", // No need for complex margins
+        threshold: 0.1 // Adjust as needed. Lower is more sensitive.
+    };
+
+    const observerCallback = (entries) => {
+        let firstIntersectingEntry = null; // Track the first intersecting
+
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                firstIntersectingEntry = entry;
+                return; // Exit loop, found the first one
+            }
+        });
+        
+        if (firstIntersectingEntry) {
+            tocLinks.forEach(link => link.classList.remove("active"));
+            const inViewId = firstIntersectingEntry.target.getAttribute("id");
+            if (idToLink[inViewId]) {
+                idToLink[inViewId].classList.add("active");
+            }
+        }
+    };
+
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    pages.forEach(page => observer.observe(page));
+});
+
+function scrollToDashboard() {
+    document.getElementById('main').scrollIntoView({ behavior: 'smooth' });
+    
+}
+document.addEventListener("DOMContentLoaded", function() {
+  const sidebar = document.getElementById('sidebar');
+  const fullPageLanding = document.getElementById('fullPageLanding');
+
+  function handleScroll() {
+    // Get the rectangle of the landing page section
+    const rect = fullPageLanding.getBoundingClientRect();
+    // Check if the landing page is fully in view
+    if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+      sidebar.classList.add('hidden'); // Hide sidebar when landing is fully in view
+    } else {
+      sidebar.classList.remove('hidden'); // Show sidebar otherwise
+    }
+  }
+
+  // Add scroll event listener
+  window.addEventListener('scroll', handleScroll);
+  handleScroll(); // Call on initial load to set the correct state
+});
+
+
+//the change content in landing:
+document.addEventListener("DOMContentLoaded", function() {
+    const phrases = [
+        "Explore how Growth Balance Analysis (GBA) models optimize cellular growth by balancing biochemical reactions and resource allocation.",
+        "Understand the economic values of biochemical reactions in cellular models, using marginal growth rate changes.",
+        "Utilize GBA to predict optimal growth states, where only essential reactions are active, enhancing understanding of cellular efficiency.",
+        "Dive into our extended GBA framework, which incorporates Karush-Kuhn-Tucker conditions to pinpoint the optimal allocation of cellular resources.",
+        "GBA offers precise calculations of protein concentrations and growth rates based on the physicochemical constraints of cells.",
+        "Discover how GBA seamlessly integrates metabolic control analysis, extending traditional approaches to cellular modeling.",
+        "Leverage our GBA models to analyze the fundamental principles of balanced growth in microbes like E. coli and yeast.",
+        "Apply GBA to cyanobacteria to boost productivity by optimizing resource allocation for photosynthesis and carbon metabolism.",
+        "Our GBA framework provides tools for analyzing cellular growth through the mathematical lens of Lagrangian stationarity conditions.",
+        "Enhance your bioengineering projects with GBA, a framework designed for deep analysis of cellular resource allocation and metabolic processes."
+        ];
+    let currentPhraseIndex = 0;
+    const textElement = document.querySelector('.typing p');
+    const typingSpeed = 80; // Time per character in milliseconds
+    const pauseBeforeNext = 2000; // Pause time before next phrase starts typing
+
+    function typeNextPhrase() {
+        if (currentPhraseIndex >= phrases.length) {
+            currentPhraseIndex = 0; // Reset to the first phrase
+        }
+        const phrase = phrases[currentPhraseIndex++];
+        let charIndex = 0; // Current character index in the phrase
+        textElement.textContent = ''; // Clear current text
+
+        // Reset the typing and cursor animations with dynamic duration
+        textElement.style.animation = `none`; // Disable animation to reset it
+        setTimeout(() => { // Timeout to reset CSS animations by forcing reflow/repaint
+            textElement.style.animation = `blink-caret 0.75s step-end infinite, typing ${phrase.length * typingSpeed / 1000}s steps(${phrase.length}, end) forwards`;
+        }, 50);
+
+        function typeCharacter() {
+            if (charIndex < phrase.length) {
+                textElement.textContent += phrase[charIndex++];
+                setTimeout(typeCharacter, typingSpeed);
+            } else {
+                // Wait before typing the next phrase
+                setTimeout(typeNextPhrase, pauseBeforeNext);
+            }
+        }
+
+        typeCharacter(); // Start typing characters
+    }
+
+    typeNextPhrase(); // Start the typing effect
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const sidebarItems = document.querySelectorAll('.sidebar-item');
+    
+    sidebarItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // Remove 'active' class from all items
+            sidebarItems.forEach(i => i.classList.remove('active'));
+            // Add 'active' class to the clicked item
+            this.classList.add('active');
+        });
+    });
+});
+
+
+
+
+
+    </script>
+
+</body>
+
+
+</html>
+
+
+
