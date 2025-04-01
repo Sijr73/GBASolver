@@ -3,7 +3,7 @@
 
 ## Overview
 
-**GBApp** GBApp is an intuitive web application for Growth Balance Analysis (GBA) of self-replicating cell models. Built with R/Shiny, it features a user-friendly, spreadsheet-style interface that enables researchers to model cellular resource allocation under nonlinear kinetic constraints. GBApp streamlines model construction by integrating enzyme kinetics and parameter data from the BRENDA database, providing interactive matrix-based model setup, and generating dynamic visualizations of metabolic pathways. By lowering computational barriers, GBApp makes nonlinear cellular modeling more accessible to the broader scientific community.
+**GBApp** GBApp is an intuitive web application for Growth Balance Analysis (GBA) of self-replicating cell models. Built with R/Shiny, it features a user-friendly, spreadsheet-style interface that enables researchers to model cellular resource allocation under nonlinear kinetic rate laws. GBApp streamlines model construction by integrating enzyme kinetics and parameter data from the BRENDA database, and generating dynamic visualizations of metabolic pathways. By lowering computational barriers, GBApp makes nonlinear cellular modeling more accessible to the broader scientific community.
 
 🔗 **Try GBApp online:** [GBApp Web Application](https://gba.ccb.cs.hhu.de/) 
 
@@ -31,14 +31,14 @@ These instructions let you build and run the GBApp Docker container on your loca
 
    
    ```bash
-   docker build  -t gba-app .
+   docker build -t gba-app .
    ```
 
 4. **Run the Docker Container**
 
    ```bash
    
-   docker run -d -p 3838:3838 --name gba-app gba-app
+   docker run -d --rm -p 3838:3838 --name gba-app gba-app
    ```
    `-d`: run the container in detached mode
 
@@ -48,4 +48,5 @@ These instructions let you build and run the GBApp Docker container on your loca
 
    - Go to http://localhost:3838 in your web browser.
    - You should see the GBApp home page.
-
+## Contact
+If you have any questions or run into issues, please open an issue in the repository or contact the repository maintainer.
