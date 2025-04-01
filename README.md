@@ -29,7 +29,7 @@ These instructions let you build and run the GBApp Docker container on your loca
 
 3. **Build the Docker Image**
 
-   For M1/M2 (ARM-based) Macs or any ARM-based system, specify the AMD64 platform to ensure compatibility:
+   
    ```bash
    docker build  -t gba-app .
    ```
