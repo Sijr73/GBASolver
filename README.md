@@ -24,7 +24,7 @@ These instructions let you build and run the Cell Growth Simulator Docker contai
 2. **Clone or Download this Repository**
 
    ```bash
-   git clone https://github.com/Sijr73/GBApp.git
+   git clone https://github.com/Sijr73/CellGrowthSimulator.git
    cd GBApp
 
 3. **Build the Docker Image**
@@ -44,9 +44,9 @@ These instructions let you build and run the Cell Growth Simulator Docker contai
 
    `-p 3838:3838`: map port 3838 in the container to port 3838 on your machine
 
-5. **Open GBApp**
+5. **Open Cell Growth Simulator**
 
    - Go to http://localhost:3838 in your web browser.
-   - You should see the GBApp home page.
+   - You should see the Cell Growth Simulator home page.
 ## Contact
 If you have any questions or run into issues, please open an issue in the repository or contact the repository maintainer.
