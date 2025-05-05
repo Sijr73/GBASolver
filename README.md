@@ -7,16 +7,16 @@
 
 🔗 **Try Cell Growth Simulator online:** [Cell Growth Simulator Web Application](https://cellgrowthsim.com/) 
 
-This repository contains all the necessary source code and Docker configuration files for building and running GBApp locally or on a server.
+This repository contains all the necessary source code and Docker configuration files for building and running Cell Growth Simulator locally or on a server.
 
-1. **Source Code** for the GBApp Shiny application (in the `GBApp` directory)  
-2. **Dockerfile** for building and running the GBApp container locally or on a server
+1. **Source Code** for the Cell Growth Simulator Shiny application (in the `GBApp` directory)  
+2. **Dockerfile** for building and running the Cell Growth Simulator container locally or on a server
 
 ---
 
-##  Running GBApp locally via Docker
+##  Running Cell Growth Simulator locally via Docker
 
-These instructions let you build and run the GBApp Docker container on your local machine.
+These instructions let you build and run the Cell Growth Simulator Docker container on your local machine.
 
 1. **Install Docker**  
    - [Docker Desktop](https://www.docker.com/) for macOS, Windows, or Linux.
